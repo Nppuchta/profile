@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="carousel.css">
+    <link rel="stylesheet" href="content.css">
+</head>
+<body>
+    <header>
+        <img class="logo" src="https://static.wixstatic.com/media/fec3fd_16c17bc400d24fc6ba6f216b6d574c36~mv2.png/v1/fill/w_156,h_152,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_16c17bc400d24fc6ba6f216b6d574c36~mv2.png">
+        <nav>
+            <ul class="nav__links">
+                <li><a href="#rain">City Rain</a></li>
+                <li><a href="#vulcano">Vulcano</a></li>
+                <li><a href="#classroom">Classroom</a></li>
+                <li><a href="#">Bio</a></li>
+                <li>
+                    <a href="https://www.artstation.com/naomipuchta6" target="_blank">
+                        <img class="logo-artstation" src="https://static.wixstatic.com/media/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/naomipuchta" target="_blank">
+                        <img class="logo-linkedin" src="https://static.wixstatic.com/media/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <a class="cta" href="#">
+            <button>Contact</button>
+        </a>
+    </header>
+
+    <div class="banner">
+        <div class="slider" style="--quantity: 5">
+            <div class="item glass" style="--position: 1">
+                <h1 class="golden">Naomi Puchta</h1>
+                <h3>VFX Specialist</h3>
+                <p><br/>
+                   Hello there! My name is Naomi Puchta
+                   and I am a recently graduated VFX artist
+                   from Gnomon based in the Bay Area. My
+                   interest in all things film and tv stemmed
+                   from my experiences in highschool with
+                   stylized digital artwork and my introduction
+                   into computer science experimenting with
+                   Java, Javascript, Python and more. VFX
+                   and film takes the best of both worlds
+                   and allows me to express my creativity
+                   in captivating pieces while satisfying
+                   my desire for problem solving... 
+                </p>
+            </div>
+            <div class="item glass" style="--position: 2">
+                <video autoplay muted loop class="bg-video">
+                    <source type="video/mp4" src="videos/highway-traffic.mp4">
+                </video>
+            </div>
+            <div class="item glass" style="--position: 3">
+                <video autoplay muted loop class="bg-video">
+                    <source type="video/mp4" src="portfolio/npuchta-rain.mp4">
+                </video>
+            </div>
+            <div class="item glass" style="--position: 4">
+                <video autoplay muted loop class="bg-video">
+                    <source type="video/mp4" src="portfolio/npuchta-vulcano.mp4">
+                </video>
+            </div>
+            <div class="item glass" style="--position: 5">
+                <video autoplay muted loop class="bg-video">
+                    <source type="video/mp4" src="portfolio/npuchta-classroom.mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <a name="rain"></a>
+        <video autoplay muted loop class="bg-video">
+            <source type="video/mp4" src="portfolio/npuchta-rain.mp4">
+        </video>
+        <a name="vulcano"></a>
+        <video autoplay muted loop class="bg-video">
+            <source type="video/mp4" src="portfolio/npuchta-vulcano.mp4">
+        </video>
+        <a name="classroom"></a>
+        <video autoplay muted loop class="bg-video">
+            <source type="video/mp4" src="portfolio/npuchta-classroom.mp4">
+        </video>
+    </div>
+    
+</body>
+</html>
+
+<script type="text/javascript">
+    // const items = Array.from(document.getElementsByClassName('item'));
+    // items.forEach(item => item.onclick = (e) => {
+    //     clickedItem = e.target;
+    //     console.log()
+    // });
+    
+    // items.forEach(item => {
+    //     item.onclick = (e) => {
+    //         clickedItem = e.target.parentNode;
+    //         length = items.length;
+    //         start = items.indexOf(clickedItem);
+    //         for (let i=0; i<length; i++) {
+    //             index = (start + i) % length;
+    //             item = items[index];
+    //             console.log("%d) %o", index, item);
+    //             setTimeout(() => item.classList.toggle('invisible'), 200 + index * 100);
+    //         }
+    //   }
+    // });
+</script>
+
+<script type="text/javascript">
+    const slider = document.querySelector('.slider');
+    const quantity = slider.style.getPropertyValue('--quantity');
+    const totalDuration = 60;
+    const offsetDelay = totalDuration / quantity * 1.5;
+    let isPlaying = true;
+
+    slider.style.animationDelay = '0s';
+
+    // Toggle play/pause
+    function toggleAnimation() {
+      isPlaying = !isPlaying;
+      slider.style.animationPlayState = isPlaying ? 'running' : 'paused';
+    }
+
+    // style.animationDelay = '9s'; // +12s
+    function adjustRotation(direction) {
+        if (isPlaying) {
+            toggleAnimation();
+        }
+        let delay = Number.parseInt(slider.style.animationDelay);
+        delay += direction == 'right' ? offsetDelay : -offsetDelay;
+        console.log('%s delay', `${delay}s`);
+        slider.style.animationDelay = `${delay}s`;
+    }
+
+    // Keyboard event listener
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'Space') {
+        event.preventDefault(); // Prevent page scroll
+        toggleAnimation();
+      } else if (event.code === 'ArrowLeft') {
+        adjustRotation('left');
+      } else if (event.code === 'ArrowRight') {
+        adjustRotation('right');
+      }
+    });
+</script>

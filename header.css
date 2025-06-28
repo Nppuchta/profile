@@ -1,0 +1,73 @@
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 13px 10%;
+  background-color: #1a1a1a;
+  font-size: 1.6em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  cursor: pointer;
+  width: 4em;
+  margin-right: auto;
+}
+
+.logo-artstation {
+  cursor: pointer;
+  width: 1em;
+}
+
+.logo-linkedin {
+  cursor: pointer;
+  width: 1em;
+}
+
+.nav__links {
+  list-style: none;
+}
+
+.nav__links li {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.nav__links li a,
+.nav__links li a:hover {
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+  color: whitesmoke;
+}
+
+.nav__links li a:hover {
+  color: #0088a9;
+}
+
+button {
+  color: whitesmoke;
+  background-color: rgba(0, 136, 169, 1);
+  padding: 9px 25px;
+  margin-left: 2em;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}
+
+.nav__links a {
+  animation: scrollAnimation 1.5s ease;
+}
+
+@keyframes scrollAnimation {
+  from { scroll-snap-align: none; }
+  to { scroll-snap-align: start; }
+}
+
