@@ -84,14 +84,14 @@
   height: 100%;
   object-fit: cover; /* Fills container, may crop */
   position: relative;
-  clip-path: polygon(
-        0% 0%, /* Top-left corner, slightly below tab height */
-        40% 0%, /* Start of tab */
-        50% 10%, /* Tab top-left */
-        100% 10%, /* Tab top-right */
-        100% 100%, /* Tab bottom-right */
-        0% 100% /* Bottom-left corner */
-      );
+  /* clip-path: polygon(
+        0% 0%,
+        40% 0%,
+        50% 10%,
+        100% 10%,
+        100% 100%,
+        0% 100%
+      ); */
 }
 
 .banner .slider .item h1,
