@@ -7,6 +7,7 @@ class DragController {
       baseRotateX: -16,
       perspective: 1000,
       velocityThreshold: 0.1,
+      snapStep: 72,
       ...options
     };
     
@@ -38,6 +39,9 @@ class DragController {
     this.element.addEventListener('touchstart', this.handleTouchStart.bind(this));
     document.addEventListener('touchmove', this.handleTouchMove.bind(this));
     document.addEventListener('touchend', this.handleEnd.bind(this));
+
+    // Remove the transition after snapping to allow free rotation again
+    this.element.addEventListener('transitionend', this.handleTransitionEnd.bind(this));
   }
   
   getEventCoords(e) {
@@ -80,6 +84,10 @@ class DragController {
     this.state.isDragging = false;
     this.startDeceleration();
   }
+
+  handleTransitionEnd() {
+    this.element.style.transition = '';
+  }
   
   updateRotation(deltaX, deltaY) {
     this.state.currentRotateY += deltaX * this.options.sensitivity;
@@ -116,6 +124,10 @@ class DragController {
       
       if (hasVelocity) {
         requestAnimationFrame(animate);
+      } else {
+        let snappedRotateY = this.snapToNearest(this.state.currentRotateY);
+        this.element.style.transition = 'transform 0.4s cubic-bezier(.25,.8,.25,1)';
+        this.element.style.transform = `perspective(1000px) rotateX(-16deg) rotateY(${snappedRotateY}deg)`;
       }
     };
     
@@ -127,6 +139,10 @@ class DragController {
     this.state.currentRotateX = x;
     this.state.currentRotateY = y;
     this.updateTransform();
+  }
+
+  snapToNearest(angle) {
+    return Math.round(angle / this.options.snapStep) * this.options.snapStep;
   }
   
   reset() {
@@ -142,6 +158,7 @@ class DragController {
     this.element.removeEventListener('touchstart', this.handleTouchStart);
     document.removeEventListener('touchmove', this.handleTouchMove);
     document.removeEventListener('touchend', this.handleEnd);
+    this.element.removeEventListener('transitionend', this.handleTransitionEnd);
   }
 }
 
