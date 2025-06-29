@@ -1,0 +1,56 @@
+.nav-side-links {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  padding: 0;
+}
+
+.nav-side-links.glass {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Blur effect for glass look */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-left: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.nav-side-links li {
+  width: 100%;
+  padding: .25em 0.5em;
+  cursor: pointer;
+}
+
+.nav-side-links li:hover {
+  background-color: whitesmoke;
+  color: #343434;
+}
+
+.nav-side-links li a,
+.nav-side-links li a:hover {
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+  color: whitesmoke;
+  width: 100%;
+}
+
+
+.nav-side-links .logo-artstation {
+  width: 1em;
+}
+
+.nav-side-links .logo-linkedin {
+  width: 1em;
+}
+
+@media(max-width: 400px) {
+  .nav-side {
+    width: 100% !important;
+  }
+}

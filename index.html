@@ -8,15 +8,43 @@
     </style>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/nav-top.css">
+    <link rel="stylesheet" href="styles/nav-side.css">
     <link rel="stylesheet" href="styles/carousel.css">
     <link rel="stylesheet" href="styles/content.css">
+    <script defer src="scripts/nav.js"></script>
     <script defer src="scripts/carousel.js"></script>
 </head>
 <body>
     <header>
-        <img class="logo" src="https://static.wixstatic.com/media/fec3fd_16c17bc400d24fc6ba6f216b6d574c36~mv2.png/v1/fill/w_156,h_152,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_16c17bc400d24fc6ba6f216b6d574c36~mv2.png">
         <nav>
-            <ul class="nav__links">
+            <ul class="nav-top nav-top-links">
+                <li><a href="#">
+                    <!-- <img class="np-logo" src="https://static.wixstatic.com/media/fec3fd_16c17bc400d24fc6ba6f216b6d574c36~mv2.png/v1/fill/w_156,h_152,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_16c17bc400d24fc6ba6f216b6d574c36~mv2.png"> -->
+                </a></li>
+                <li class="hide-on-mobile"><a href="#rain">City Rain</a></li>
+                <li class="hide-on-mobile"><a href="#vulcano">Vulcano</a></li>
+                <li class="hide-on-mobile"><a href="#classroom">Classroom</a></li>
+                <li class="hide-on-mobile"><a href="#">Bio</a></li>
+                <li class="hide-on-mobile">
+                    <a href="https://www.artstation.com/naomipuchta6" target="_blank">
+                        <img class="logo-artstation" src="https://static.wixstatic.com/media/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png">
+                    </a>
+                </li>
+                <li class="hide-on-mobile">
+                    <a href="https://www.linkedin.com/in/naomipuchta" target="_blank">
+                        <img class="logo-linkedin" src="https://static.wixstatic.com/media/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png">
+                    </a>
+                </li>
+                <li class="hide-on-mobile">
+                    <a class="btn" href="#">
+                        <button>Contact</button>
+                    </a>
+                </li>
+                <li><a href="#"><img class="icon-menu" src="icons/icon-menu.svg"></a></li>
+            </ul>
+            <ul class="nav-side nav-side-links glass">
+                <li><a href="#"><img class="icon-close" src="icons/icon-close.svg"></a></li>
                 <li><a href="#rain">City Rain</a></li>
                 <li><a href="#vulcano">Vulcano</a></li>
                 <li><a href="#classroom">Classroom</a></li>
@@ -33,9 +61,6 @@
                 </li>
             </ul>
         </nav>
-        <a class="cta" href="#">
-            <button>Contact</button>
-        </a>
     </header>
 
     <div class="banner">

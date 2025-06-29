@@ -48,20 +48,11 @@
     aspect-ratio: 16/9;
     transform-style: preserve-3d;
     transform: perspective(1000px);
-    /* animation: autoRun 60s linear infinite; */
     animation-delay: 0ms;
     z-index: 2;
     opacity: 1;
     visibility: visible;
     user-select: none;
-}
-
-@keyframes autoRun {
-    from {
-        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
-    }to {
-        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
-    }
 }
 
 .banner .slider .item {

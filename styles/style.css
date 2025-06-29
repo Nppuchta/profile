@@ -3,17 +3,18 @@
 
 * {
     font-family: 'ICA Rubrik';
-    margin: 0;
-    padding: 0;
+    margin: 0; /* always add this */
+    padding: 0; /* always add this */
     box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
 }
 
 body {
+    min-height: 100vh; /* always add this */
     background-color: #1f1f20;
     background-image: url(../images/wave-artwork.avif);
 }
