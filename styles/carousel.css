@@ -1,6 +1,6 @@
 .banner h1.large {
     color: #5a5a5a;
-    font-size: calc(20vw);
+    font-size: calc(20vw) !important;
     line-height: 1em;
 }
 
@@ -9,30 +9,29 @@
 }
 
 .banner .golden {
-    color: rgb(226 172 1) !important;
-    text-shadow: 0 0 20px #ffd700;
-}
-
-.invisible {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    color: var(--yellow-5);
+    text-shadow: 0 0 20px var(--yellow-2);
 }
 
 .banner .glass {
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Blur effect for glass look */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    /* Semi-transparent white */
+    background: rgba(255, 255, 255, 0.1);
+    /* Blur effect for glass look */
+    backdrop-filter: blur(10px);
+    /* Safari support */
+    -webkit-backdrop-filter: blur(10px);
+    /* Subtle border */
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    padding: max(1vw, 10px); /* Optional: internal spacing */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */ /* Soft shadow */
+    /* Optional: internal spacing */
+    padding: max(1vw, 10px);
 }
 
 .banner {
     display: flex;
     margin: auto;
-    width: 80%;
+    width: calc(100vw - 20%);
     height: calc(100vw / (16/9));
     text-align: center;
     overflow: visible;
@@ -56,15 +55,28 @@
 }
 
 .banner .slider .item {
-    cursor: pointer;
+    cursor: pointer !important;
     position: absolute;
     inset: 0 0 0 0;
     transform: 
         rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
         translateZ(27vw);
+    box-shadow: 0 2.2rem 3.25rem rgba(255, 254, 247, 0.15);
     font-size: calc(100vw * 0.0125);
     user-select: none;
 }
+
+/* .banner .slider .item::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: rotateX(90deg) translateZ(-100px);
+  filter: blur(10px);
+} */
 
 .banner .slider .item img {
     width: 100%;

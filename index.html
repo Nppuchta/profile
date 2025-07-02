@@ -1,74 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    </style>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/nav-top.css">
-    <link rel="stylesheet" href="styles/nav-side.css">
-    <link rel="stylesheet" href="styles/carousel.css">
-    <link rel="stylesheet" href="styles/content.css">
-    <script defer src="scripts/nav.js"></script>
-    <script defer src="scripts/carousel.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naomi Puchta - VFX Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/open-props@1.7.6/open-props.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/open-props@1.7.6/normalize.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="nav-top nav-top-links">
-                <li><a href="#">
-                    <!-- <img class="np-logo" src="https://static.wixstatic.com/media/fec3fd_16c17bc400d24fc6ba6f216b6d574c36~mv2.png/v1/fill/w_156,h_152,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_16c17bc400d24fc6ba6f216b6d574c36~mv2.png"> -->
-                </a></li>
-                <li class="hide-on-mobile"><a href="#rain">City Rain</a></li>
-                <li class="hide-on-mobile"><a href="#vulcano">Vulcano</a></li>
-                <li class="hide-on-mobile"><a href="#classroom">Classroom</a></li>
-                <li class="hide-on-mobile"><a href="#">Bio</a></li>
-                <li class="hide-on-mobile">
-                    <a href="https://www.artstation.com/naomipuchta6" target="_blank">
-                        <img class="logo-artstation" src="https://static.wixstatic.com/media/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png">
-                    </a>
-                </li>
-                <li class="hide-on-mobile">
-                    <a href="https://www.linkedin.com/in/naomipuchta" target="_blank">
-                        <img class="logo-linkedin" src="https://static.wixstatic.com/media/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png">
-                    </a>
-                </li>
-                <li class="hide-on-mobile">
-                    <a class="btn" href="#">
-                        <button>Contact</button>
-                    </a>
-                </li>
-                <li><a href="#"><img class="icon-menu" src="icons/icon-menu.svg"></a></li>
-            </ul>
-            <ul class="nav-side nav-side-links glass">
-                <li><a href="#"><img class="icon-close" src="icons/icon-close.svg"></a></li>
-                <li><a href="#rain">City Rain</a></li>
-                <li><a href="#vulcano">Vulcano</a></li>
-                <li><a href="#classroom">Classroom</a></li>
-                <li><a href="#">Bio</a></li>
-                <li>
-                    <a href="https://www.artstation.com/naomipuchta6" target="_blank">
-                        <img class="logo-artstation" src="https://static.wixstatic.com/media/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/naomipuchta" target="_blank">
-                        <img class="logo-linkedin" src="https://static.wixstatic.com/media/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png">
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="title btn-home">Naomi Puchta</div>
+    <nav class="menu-desktop">
+      <ul>
+        <li class="hide-on-mobile page-nav btn-home">Home</li>
+        <li class="hide-on-mobile page-nav btn-city-rain">City Rain</li>
+        <li class="hide-on-mobile page-nav btn-volcano">Volcano</li>
+        <li class="hide-on-mobile page-nav btn-classroom">Classroom</li>
+        <li class="hide-on-mobile page-nav btn-bio">Bio</li>
+        <li>
+            <button href="https://www.artstation.com/naomipuchta6" class="hide-on-mobile" target="_blank">
+                <img class="logo-artstation" src="images/ArtStation-logomark-white.svg">
+            </button>
+        </li>
+        <li>
+            <button href="https://www.linkedin.com/in/naomipuchta" class="hide-on-mobile" target="_blank">
+                <img class="logo-linkedin" src="images/linkedin-white-96.png">
+            </button>
+        </li>
+      </ul>
+    </nav>
+    <button class="btn-mobile-menu-open hide-on-desktop" aria-label="Open menu">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1rem" width="1rem" fill="#e3e3e3" viewBox="0 -960 960 960">
+        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+      </svg>
+    </button>
+  </header>
 
+  <div class="menu-mobile-container">
+    <nav class="menu-mobile glass">
+      <ul>
+        <li class="close-menu">
+          <button class="btn-mobile-menu-close" aria-label="Close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1rem" width="1rem" fill="#e3e3e3" viewBox="0 -960 960 960">
+              <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="page-nav btn-home">Home</li>
+        <li class="page-nav btn-city-rain">City Rain</li>
+        <li class="page-nav btn-volcano">Volcano</li>
+        <li class="page-nav btn-classroom">Classroom</li>
+        <li class="page-nav btn-bio">Bio</li>
+        <li><button href="https://www.artstation.com/naomipuchta6" target="_blank">
+                <img class="logo-artstation" src="https://static.wixstatic.com/media/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fec3fd_91e7bf77968348fba8b9107b95fe22ee~mv2.png">
+            </button>
+        </li>
+        <li><button href="https://www.linkedin.com/in/naomipuchta" target="_blank">
+                <img class="logo-linkedin" src="https://static.wixstatic.com/media/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png/v1/fill/w_66,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_b5690303a8ff470e9b1c03a24aff140b~mv2.png">
+            </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ------------------------------------------------------- -->
+  <!-- Page                                                    -->
+  <!-- ------------------------------------------------------- -->
+  <page class="page-1 home active">
     <div class="banner">
         <div class="slider" style="--quantity: 5">
             <div class="item glass" style="--position: 1">
-                <h1 class="golden">Naomi Puchta</h1>
-                <h3>VFX Specialist</h3>
-                <p><br/>
+                <p class="h1 golden">Naomi Puchta</p>
+                <p class="h3">VFX Specialist</p>
+                <div class="p"><br/>
                    Hello there! My name is Naomi Puchta
                    and I am a recently graduated VFX artist
                    from Gnomon based in the Bay Area. My
@@ -81,7 +88,7 @@
                    and allows me to express my creativity
                    in captivating pieces while satisfying
                    my desire for problem solving... 
-                </p>
+                </div>
             </div>
             <div class="item glass" style="--position: 2">
                 <video autoplay muted loop class="bg-video">
@@ -104,82 +111,262 @@
                 </video>
             </div>
         </div>
-    </div>
-    <div class="content">
-        <a name="rain"></a>
-        <video controls muted loop class="bg-video">
+    </div>    
+  </page>
+
+  <!-- ------------------------------------------------------- -->
+  <!-- Page                                                    -->
+  <!-- ------------------------------------------------------- -->
+  <page class="page-2 city-rain">
+    <production>
+      <div class="grid-col-span-2">
+        <div class="glass">
+          <video controls muted loop class="bg-video">
             <source type="video/mp4" src="portfolio/npuchta-rain.mp4">
-        </video>
-        <a name="vulcano"></a>
-        <video controls muted loop class="bg-video">
+          </video>
+        </div>
+      </div>
+      <div class="description">
+        <h3>Breakdown</h3>
+        <div class="p">
+          This city is inspired by some of the semi futuristic neon city
+          artwork I've seen over the years as well as the vibrant nights
+          in Tokyo. I took my knowledge in modeling and texturing, and
+          created a scene that then could be applied into Houdini to bring
+          life to the scene. 
+        </div>
+      </div>
+      <div class="content app-icons">
+        <h4>Programs Used</h4>
+        <div>
+          <img src="icons/icon-sw-blender.avif" alt="Blender">
+          <img src="icons/icon-sw-adobe-substance-painter.avif" alt="Adobe Substance Painter">
+          <img src="icons/icon-sw-maya.avif" alt="Maya">
+          <img src="icons/icon-sw-nuke.avif" alt="Nuke">
+          <img src="icons/icon-sw-redshift.avif" alt="Redshift">
+        </div>
+      </div>
+      <div class="description">
+        <h3>Modeling</h3>
+        <div class="p">
+          I first began modeling out the buildings, assets, and pathway in
+          Maya. Once I was satisfied with the layout I went back in and
+          began assembling the UVS. (Human Models were placed in for size
+          reference so that when I eventually began running simulations,
+          that everything would be roughly the correct scale.)
+        </div>
+      </div>
+      <div class="content">
+        <img src="images/city-rain/modeling.avif" class="glass">
+      </div>
+      <div class="description">
+        <h3>Texturing</h3>
+        <div class="p">
+          Once this was complete, I took each asset into Substance painter
+          and began painting on the textures. Each Texture was then loaded
+          into Houdini and Rendered out to give an idea what a render would
+          look like.
+        </div>
+      </div>
+      <div class="content">
+        <img src="images/city-rain/texturing.avif" class="glass">
+      </div>
+      <div class="description">
+        <h3>Into Houdini</h3>
+        <div class="p">
+          Then I began working on the simulations: trickling rain, main rain,
+          puddle, splashes, pipe steam, and ground smoke.
+        </div>
+      </div>
+      <div class="content">
+        <img src="images/city-rain/houdini.avif" class="glass">
+      </div>
+      <div class="description">
+        <h3>Compositing</h3>
+        <div class="p">
+          Since only so much could be done with texturing, I took the final
+          renders into nuke to add certain blurs and color grading to achieve
+          the final effect!
+        </div>
+      </div>
+      <div class="content">
+        <img src="images/city-rain/compositing.avif" class="glass">
+      </div>
+    </production>
+  </page>
+
+  <!-- ------------------------------------------------------- -->
+  <!-- Page                                                    -->
+  <!-- ------------------------------------------------------- -->
+  <page class="page-3 volcano">
+    <production>
+      <div class="grid-col-span-2">
+        <div class="glass">
+          <video controls muted loop class="bg-video">
             <source type="video/mp4" src="portfolio/npuchta-vulcano.mp4">
-        </video>
-        <a name="classroom"></a>
-        <video controls muted loop class="bg-video">
+          </video>
+        </div>
+      </div>
+      <div class="description">
+        <h3>Breakdown</h3>
+        <div class="p">
+          To do. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Asperiores laudantium illum, dolores consequatur quisquam iste
+          quod ad, illo nihil nemo, neque officia. Quae iste quod qui
+          quibusdam odio expedita facilis.
+        </div>
+      </div>
+      <div class="content app-icons">
+        <h4>Programs Used</h4>
+        <div>
+          <img src="icons/icon-sw-blender.avif" alt="Blender">
+          <img src="icons/icon-sw-adobe-substance-painter.avif" alt="Adobe Substance Painter">
+          <img src="icons/icon-sw-maya.avif" alt="Maya">
+          <img src="icons/icon-sw-nuke.avif" alt="Nuke">
+          <img src="icons/icon-sw-redshift.avif" alt="Redshift">
+          <img src="icons/icon-sw-v-ray.avif" alt="V-Ray">
+          <img src="icons/icon-sw-medibang.avif" alt="Medibang">
+        </div>
+      </div>
+      <div class="description">
+        <h3>Modeling</h3>
+        <div class="p">
+          To do. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Asperiores laudantium illum, dolores consequatur quisquam iste
+          quod ad, illo nihil nemo, neque officia. Quae iste quod qui
+          quibusdam odio expedita facilis.
+        </div>
+      </div>
+      <div class="content">
+        <img src="images/city-rain/modeling.avif" class="glass">
+      </div>
+    </production>
+  </page>
+
+  <!-- ------------------------------------------------------- -->
+  <!-- Page                                                    -->
+  <!-- ------------------------------------------------------- -->
+  <page class="page-4 classroom">
+    <production>
+      <div class="grid-col-span-2">
+        <div class="glass">
+          <video controls muted loop class="bg-video">
             <source type="video/mp4" src="portfolio/npuchta-classroom.mp4">
-        </video>
+          </video>
+        </div>
+      </div>
+      <div class="description">
+        <h3>Breakdown</h3>
+        <div class="p">
+          Having a love for everything scary and horror, I wanted to create
+          a haunting classroom scene that would leave the viewer unnerved. 
+        </div>
+      </div>
+      <div class="content app-icons">
+        <h4>Programs Used</h4>
+        <div>
+          <img src="icons/icon-sw-blender.avif" alt="Blender">
+          <img src="icons/icon-sw-adobe-substance-painter.avif" alt="Adobe Substance Painter">
+          <img src="icons/icon-sw-maya.avif" alt="Maya">
+          <img src="icons/icon-sw-nuke.avif" alt="Nuke">
+          <img src="icons/icon-sw-redshift.avif" alt="Redshift">
+        </div>
+      </div>
+      <div class="description">
+        <h3>Modeling</h3>
+        <div class="p">
+          this was a texturing and modeling project, so I started out
+          the process by blocking out the classroom roughly before
+          refining and resizing modeled assets. 
+        </div>
+      </div>
+      <div class="content">
+        <div class="glass">
+          <div class="carousel-2d">
+            <div class="carousel-2d-container">
+              <img class="carousel-2d-image" src="images/classroom/carousel/modeling-1.png" alt="Modeling 1">
+              <img class="carousel-2d-image" src="images/classroom/carousel/modeling-2.png" alt="Modeling 2">
+              <img class="carousel-2d-image" src="images/classroom/carousel/modeling-3.png" alt="Modeling 3">
+              <img class="carousel-2d-image" src="images/classroom/carousel/modeling-4.png" alt="Modeling 4">
+              <img class="carousel-2d-image" src="images/classroom/carousel/modeling-5.png" alt="Modeling 5">
+              <img class="carousel-2d-image" src="images/classroom/carousel/modeling-6.png" alt="Modeling 6">
+            </div>
+            <button class="arrow left-arrow">&#10094;</button>
+            <button class="arrow right-arrow">&#10095;</button>
+          </div>
+        </div>
+      </div>
+      <div class="description">
+        <h3>Texturing</h3>
+        <div class="p">
+          Once this was done I initially finished the project by utilizing
+          photoshop and Maya's Vray to render out a completed version of
+          the project. Eventually I revisited this project and decided to
+          add some atmospheric FX in Houdini.
+        </div>
+      </div>
+      <div class="content">
+        <img src="images/classroom/classroom-texturing.avif" class="glass">
+      </div>
+      <div class="description">
+        <h3>Houdini FX</h3>
+        <div class="p">
+          I began by adding dust and debris into the air before introducing
+          a spider web simulation and some falling debris.
+        </div> 
+      </div>
+      <div class="content">
+        <img src="images/classroom/classrom-houdini.avif" class="glass">
+      </div>
+      <div class="description">
+        <h3>Rendering</h3>
+        <div class="p">
+          Then I Rendered and composited the final scene, utilizing Zdepth,
+          light groups, and shadow passes to amplify the detail and mood in
+          the original render in Maya.
+        </div> 
+      </div>
+      <div class="content">
+        <img src="images/classroom/classroom-rendering.avif" class="glass">
+      </div>
+    </production>
+  </page>
+
+  <!-- ------------------------------------------------------- -->
+  <!-- Page                                                    -->
+  <!-- ------------------------------------------------------- -->
+  <page class="page-5 biography">
+    <h1>About Me</h1>
+    <div class="p">
+      Hello there! My name is Naomi Puchta and I am a recently
+      graduated VFX artist from Gnomon based in the Bay Area. My
+      interest in all things film and tv stemmed from my experiences
+      in highschool with stylized digital artwork and my introduction
+      into computer science experimenting with Java, Javascript,
+      Python and more. VFX and film takes the best of both worlds
+      and allows me to express my creativity in captivating pieces
+      while satisfying my desire for problem solving.
     </div>
-    
+    <div class="p">
+      I also have a passion for character sculpting, asset modeling,
+      texturing and stylized character artworks. With this I'm able
+      to combine my expertise in different mediums to create a
+      complex world within my scenes.
+    </div>
+  </page>
+
+  <!-- ------------------------------------------------------- -->
+  <!-- End                                                     -->
+  <!-- ------------------------------------------------------- -->
+
+  <footer>
+    <div>© 2025 - VFX Portfolio - Naomi Puchta</div>
+  </footer>
+
+  <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+  <script src="scripts/menu-controller.js"></script>
+  <script src="scripts/page-controller.js"></script>
+  <script src="scripts/carousel.js  "></script>
+  <script src="scripts/carousel-2d.js  "></script>
 </body>
 </html>
-
-<script type="text/javascript">
-    // const items = Array.from(document.getElementsByClassName('item'));
-    // items.forEach(item => item.onclick = (e) => {
-    //     clickedItem = e.target;
-    //     console.log()
-    // });
-    
-    // items.forEach(item => {
-    //     item.onclick = (e) => {
-    //         clickedItem = e.target.parentNode;
-    //         length = items.length;
-    //         start = items.indexOf(clickedItem);
-    //         for (let i=0; i<length; i++) {
-    //             index = (start + i) % length;
-    //             item = items[index];
-    //             console.log("%d) %o", index, item);
-    //             setTimeout(() => item.classList.toggle('invisible'), 200 + index * 100);
-    //         }
-    //   }
-    // });
-</script>
-
-<script type="text/javascript">
-    const slider = document.querySelector('.slider');
-    const quantity = slider.style.getPropertyValue('--quantity');
-    const totalDuration = 60;
-    const offsetDelay = totalDuration / quantity * 1.5;
-    let isPlaying = true;
-
-    slider.style.animationDelay = '0s';
-
-    // Toggle play/pause
-    function toggleAnimation() {
-      isPlaying = !isPlaying;
-      slider.style.animationPlayState = isPlaying ? 'running' : 'paused';
-    }
-
-    // style.animationDelay = '9s'; // +12s
-    function adjustRotation(direction) {
-        if (isPlaying) {
-            toggleAnimation();
-        }
-        let delay = Number.parseInt(slider.style.animationDelay);
-        delay += direction == 'right' ? offsetDelay : -offsetDelay;
-        console.log('%s delay', `${delay}s`);
-        slider.style.animationDelay = `${delay}s`;
-    }
-
-    // Keyboard event listener
-    document.addEventListener('keydown', (event) => {
-      if (event.code === 'Space') {
-        event.preventDefault(); // Prevent page scroll
-        toggleAnimation();
-      } else if (event.code === 'ArrowLeft') {
-        adjustRotation('left');
-      } else if (event.code === 'ArrowRight') {
-        adjustRotation('right');
-      }
-    });
-</script>

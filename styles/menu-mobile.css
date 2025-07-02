@@ -1,0 +1,78 @@
+.menu-mobile-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  min-width: 35%;
+  height: 100vh;
+  padding: 0;
+  margin-left: auto;
+  background: var(--surface-2);
+  transition: right var(--animation-ease-in-out-2);
+  z-index: 1000;
+}
+
+.menu-mobile.glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-mobile.open {
+  display: block;
+}
+
+.menu-mobile ul {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.menu-mobile ul li {
+  cursor: pointer !important;
+  width: 100%;
+  padding: var(--size-3);
+}
+
+.menu-mobile ul li:not(:first-child):hover {
+  background: var(--theme-background-highlight);
+}
+
+.menu-mobile ul li:first-child {
+  text-align: end;
+}
+
+.menu-mobile ul li:not(:first-child) {
+  text-align: start;
+}
+
+.menu-mobile button {
+  cursor: pointer !important;
+  background-color: transparent;
+}
+
+.close-menu {
+  background: none;
+  border: none;
+  font-size: var(--font-size-3);
+  /* cursor: pointer; */
+}
+
+.menu-mobile img.logo-artstation,
+.menu-mobile img.logo-linkedin {
+  width: var(--font-size-4);
+}
+
+@media (max-width: 700px) {
+  .menu-mobile {
+    width: 70vw;
+  }
+}

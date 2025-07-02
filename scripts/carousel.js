@@ -163,7 +163,7 @@ class DragController {
 }
 
 // Usage
-const sliderElement = document.getElementsByClassName('slider')[0];
+const sliderElement = document.querySelector('.slider');
 const dragController = new DragController(sliderElement, {
   sensitivity: 0.5,
   friction: 0.95,

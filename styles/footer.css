@@ -1,0 +1,8 @@
+footer {
+  padding: 0;
+  color: var(--theme-color-muted);
+  font-size: var(--font-size-0);
+  margin: var(--size-2);
+  background: transparent;
+  text-align: center;
+}

@@ -1,0 +1,80 @@
+@import url("./theme.css");
+@import url("./menu-desktop.css");
+@import url("./menu-mobile.css");
+@import url("./pages.css");
+@import url("./footer.css");
+@import url("./carousel.css");
+@import url("./carousel-2d.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: black;
+  background-image: url("../images/background-wave-1.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+  /* background-blend-mode: luminosity; */
+  /* filter: brightness(0.25) hue-rotate(335deg); */
+  /* filter: hue-rotate(335deg); */
+}
+
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+  body {
+    /* background: rgba(255, 255, 255, 0.3); */
+    /* Vendor prefix for older browsers */
+    /* -webkit-backdrop-filter: blur(10px); */
+    /* backdrop-filter: blur(10px); */
+    -webkit-backdrop-filter: hue-rotate(335deg);
+    backdrop-filter: hue-rotate(335deg);
+  }
+}
+
+/* body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+  background-image: url("../images/background-wave-1.png");
+  background-size: cover;
+  background-repeat: repeat-y;
+  filter: brightness(0.25) hue-rotate(335deg);
+  z-index: -1;
+} */
+
+a {
+  text-decoration: none;
+  padding: var(--size-1);
+  border-radius: var(--radius-2);
+}
+
+svg {
+  fill: var(--theme-color);
+  transform: scale(1.5);
+}
+
+@media (max-width: 1024px) {
+  .hide-on-mobile { display: none; }
+}
+
+@media (min-width: 1025px) {
+  .hide-on-desktop { display: none; }
+}
+
+/* @media (max-width: 1024px) and (orientation: landscape) {
+  header {
+    display: none;
+  }
+} */
+

@@ -1,0 +1,207 @@
+
+page {
+  display: none;
+}
+
+page.active {
+  display: block;
+}
+
+page {
+  color: var(--theme-color-page);
+  margin-bottom: var(--size-8);
+}
+
+/* Home page */
+
+page.home {
+  flex: 1;
+  padding: var(--size-4);
+}
+
+page.home .h1 {
+  font-size: var(--size-relative-10);
+}
+
+page.home .h3 {
+  font-size: var(--size-relative-8);
+}
+
+page.home .p {
+  font-size: var(--size-relative-4);
+}
+
+page.home {
+  overflow-y: scroll;
+}
+
+/* Shared */
+
+/* Goes with: .app-icons div { justify-content: end; } */
+.app-icons {
+  text-align: right;
+}
+
+.app-icons h4 {
+  margin-bottom: var(--size-4);
+}
+
+.app-icons div {
+  display: flex;
+  gap: var(--size-2);
+  justify-content: end;
+}
+
+.app-icons img {
+  border-width: 0;
+  width: var(--size-7);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--size-3);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */ /* Soft shadow */
+  padding: max(1vw, 10px);
+}
+
+/* --------------------------------------------------- */
+/* Classroom page                                      */
+/* --------------------------------------------------- */
+
+page.city-rain {
+  margin-inline: var(--size-4);
+}
+
+page.city-rain production {
+  display: grid;
+  gap: var(--size-3);
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 50rem;
+  margin-inline: auto;
+}
+
+page.city-rain production .grid-col-span-2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 700px) {
+  page.city-rain production {
+    grid-template-columns: 1fr;
+  }
+
+  page.city-rain production .grid-col-span-2 {
+    grid-column: span 1;
+  }
+
+  page div.content {
+    margin-top: 0;
+  }
+}
+
+/* --------------------------------------------------- */
+/* Volcano page                                        */
+/* --------------------------------------------------- */
+
+page.volcano {
+  margin-inline: var(--size-4);
+}
+
+page.volcano production {
+  display: grid;
+  gap: var(--size-3);
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 50rem;
+  margin-inline: auto;
+}
+
+page.volcano production .grid-col-span-2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 700px) {
+  page.volcano production {
+    grid-template-columns: 1fr;
+  }
+
+  page.volcano production .grid-col-span-2 {
+    grid-column: span 1;
+  }
+
+  page div.content {
+    margin-top: 0;
+  }
+}
+
+/* --------------------------------------------------- */
+/* Classroom page                                      */
+/* --------------------------------------------------- */
+
+page.classroom {
+  margin-inline: var(--size-4);
+}
+
+page.classroom production {
+  display: grid;
+  gap: var(--size-3);
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 50rem;
+  margin-inline: auto;
+}
+
+page.classroom production .grid-col-span-2 {
+  grid-column: span 2;
+}
+
+page div.content {
+  margin-top: var(--size-8);
+}
+
+@media (max-width: 700px) {
+  page.classroom production {
+    grid-template-columns: 1fr;
+  }
+
+  page.classroom production .grid-col-span-2 {
+    grid-column: span 1;
+  }
+
+  page div.content {
+    margin-top: 0;
+  }
+}
+
+/* --------------------------------------------------- */
+/* Bio page                                            */
+/* --------------------------------------------------- */
+
+page.biography {
+  width: 60%;
+  margin-inline: auto;
+  padding: 1rem;
+  color: var(--theme-color-page);
+}
+
+page.biography h1 {
+  font-size: var(--size-relative-10);
+  margin-bottom: var(--size-4);
+}
+
+page.biography div.p,
+page.biography p {
+  font-size: var(--size-relative-7);
+  margin-bottom: var(--size-4);
+  display: block;
+  width: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  page.biography {
+    width: 100%;
+    margin-inline: auto;
+  }
+}
