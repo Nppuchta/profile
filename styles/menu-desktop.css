@@ -2,34 +2,28 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--size-3);
+  padding: var(--size-3) 0;
+  margin-inline: var(--size-4);
   /* background: black; */
 }
 
-.title {
+/* .title {
   font-size: var(--font-size-4);
-  color: var(--theme-color);
+  color: var(--sand-3);
+  text-shadow: 3px 3px 10px var(--sand-2);
+  padding-inline: 0.25em;
+  white-space: nowrap;
+} */
+
+.title img {
+  width: 4em;
 }
 
-.menu-desktop ul {
+.menu-desktop {
   display: flex;
-  gap: var(--size-4);
-  list-style: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-desktop ul li {
-  cursor: pointer !important;
-  color: var(--theme-color);
+  gap: 1.5em;
   font-size: var(--font-size-3);
-  padding-inline: var(--size-2);
-  border-radius: var(--size-1);
-}
-
-.menu-desktop ul li:hover {
-  background: var(--theme-color);
-  color: var(--theme-color-muted);
+  white-space: nowrap;
 }
 
 header button {
@@ -43,4 +37,8 @@ header button img.logo-artstation {
 
 header button img.logo-linkedin {
   width: var(--font-size-3);
+}
+
+.header button.btn-mobile-menu-open {
+  margin-left: 1em;
 }

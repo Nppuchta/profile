@@ -36,14 +36,23 @@
   list-style-type: none;
 }
 
+.menu-mobile ul li:first-child svg {
+  fill: var(--sand-1);
+  transform: scale(2);
+}
+
 .menu-mobile ul li {
   cursor: pointer !important;
   width: 100%;
   padding: var(--size-3);
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-8);
+  color: var(--sand-11);
 }
 
 .menu-mobile ul li:not(:first-child):hover {
   background: var(--theme-background-highlight);
+  color: var(--sand-9);
 }
 
 .menu-mobile ul li:first-child {

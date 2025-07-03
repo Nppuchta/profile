@@ -1,41 +1,64 @@
-const carousel2d = document.querySelector('.carousel-2d-container');
-const images = document.querySelectorAll('.carousel-2d-image');
-const leftArrow = document.querySelector('.left-arrow');
-const rightArrow = document.querySelector('.right-arrow');
-let currentIndex = 0;
-let startX = 0;
-let isDragging = false;
+class Carousel2dController {
+  constructor(carousel2d, options = {}) {
+    this.carousel2d = carousel2d;
+    this.carousel2dContainer = this.carousel2d.querySelector('.carousel-2d-container');
+    this.images = this.carousel2d.querySelectorAll('.carousel-2d-image');
+    this.leftArrow = this.carousel2d.querySelector('.left-arrow');
+    this.rightArrow = this.carousel2d.querySelector('.right-arrow');
 
-function updateCarousel() {
-  carousel2d.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
-
-function moveToIndex(index) {
-  const count = images.length;
-  currentIndex = (index + count) % count;
-  updateCarousel();
-}
-
-leftArrow.addEventListener('click', () => moveToIndex(currentIndex - 1));
-rightArrow.addEventListener('click', () => moveToIndex(currentIndex + 1));
-
-carousel2d.addEventListener('touchstart', (e) => {
-  startX = e.touches[0].clientX;
-  isDragging = true;
-});
-
-carousel2d.addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
-  const currentX = e.touches[0].clientX;
-  const diff = startX - currentX;
-  if (Math.abs(diff) > 50) {
-    moveToIndex(currentIndex + (diff > 0 ? 1 : -1));
-    isDragging = false;
+    this.options = {
+      ...options
+    };
+    
+    this.state = {
+      currentIndex: 0,
+      startX: 0,
+      isDragging: false,
+    };
+    
+    this.init();
   }
-});
+  
+  init() {
+    console.log('init carousel 2D controller');
+    this.addEventListeners();
+    this.updateCarousel();
+  }
 
-carousel2d.addEventListener('touchend', () => {
-  isDragging = false;
-});
+  addEventListeners() {
+    this.leftArrow.addEventListener('click', () => this.moveToIndex(this.state.currentIndex - 1));
+    this.rightArrow.addEventListener('click', () => this.moveToIndex(this.state.currentIndex + 1));
 
-updateCarousel();
+    this.carousel2dContainer.addEventListener('touchstart', (e) => {
+      this.state.startX = e.touches[0].clientX;
+      this.state.isDragging = true;
+    });
+
+    this.carousel2dContainer.addEventListener('touchmove', (e) => {
+      if (!this.state.isDragging) return;
+      const currentX = e.touches[0].clientX;
+      const diff = this.state.startX - currentX;
+      if (Math.abs(diff) > 50) {
+        this.moveToIndex(this.state.currentIndex + (diff > 0 ? 1 : -1));
+        this.state.isDragging = false;
+      }
+    });
+
+    this.carousel2dContainer.addEventListener('touchend', () => {
+      this.state.isDragging = false;
+    });
+  }
+
+  updateCarousel() {
+    this.carousel2dContainer.style.transform = `translateX(-${this.state.currentIndex * 100}%)`;
+  }
+
+  moveToIndex(index) {
+    const count = this.images.length;
+    this.state.currentIndex = (index + count) % count;
+    this.updateCarousel();
+  }
+}
+
+const carousel2d = document.querySelector('.carousel-2d');
+const carousel2dController = new Carousel2dController(carousel2d);

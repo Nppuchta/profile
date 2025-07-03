@@ -1,13 +1,14 @@
-class DragController {
+class Carousel3dController {
   constructor(element, options = {}) {
     this.element = element;
+    this.quantity = Number.parseInt(element.style.getPropertyValue('--quantity'));
     this.options = {
       sensitivity: 0.5,
       friction: 0.95,
       baseRotateX: -16,
       perspective: 1000,
       velocityThreshold: 0.1,
-      snapStep: 72,
+      snapStep: 360 / this.quantity,
       ...options
     };
     
@@ -104,11 +105,13 @@ class DragController {
     const { currentRotateX, currentRotateY } = this.state;
     
     this.element.style.transform = 
-      `perspective(${perspective}px) rotateX(${baseRotateX}deg) rotateY(${currentRotateY}deg)`;
+      `perspective(${perspective}px) rotateX(${baseRotateX}deg) rotateY(${currentRotateY}deg)`; // translateZ(-${perspective}px)
   }
   
   startDeceleration() {
     const animate = () => {
+      const { perspective } = this.options;
+
       // Apply friction
       this.state.velocityX *= this.options.friction;
       this.state.velocityY *= this.options.friction;
@@ -127,7 +130,8 @@ class DragController {
       } else {
         let snappedRotateY = this.snapToNearest(this.state.currentRotateY);
         this.element.style.transition = 'transform 0.4s cubic-bezier(.25,.8,.25,1)';
-        this.element.style.transform = `perspective(1000px) rotateX(-16deg) rotateY(${snappedRotateY}deg)`;
+        this.element.style.transform = 
+          `perspective(${perspective}px) rotateX(-16deg) rotateY(${snappedRotateY}deg)`; // translateZ(-${perspective}px)
       }
     };
     
@@ -164,12 +168,12 @@ class DragController {
 
 // Usage
 const sliderElement = document.querySelector('.slider');
-const dragController = new DragController(sliderElement, {
+const carousel3dController = new Carousel3dController(sliderElement, {
   sensitivity: 0.5,
   friction: 0.95,
   baseRotateX: -16
 });
 
 // Optional: expose controller for external access
-// dragController.reset();
-// dragController.setRotation(45, 90);
+// carousel3dController.reset();
+// carousel3dController.setRotation(45, 90);
