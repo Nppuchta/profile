@@ -1,11 +1,40 @@
-.banner h1.large {
-    color: #5a5a5a;
-    font-size: calc(18vw) !important;
-    line-height: 1em;
+/* ---------------------------- */
+/* Variables                    */
+/* ---------------------------- */
+
+:root {
+  --card-width-factor: 0.38;
+  --card-width-max: calc(var(--width-available-max) * var(--card-width-factor));
+  --card-width-desired: calc(100vw * var(--card-width-factor));
+  --card-width: min(var(--card-width-desired), var(--card-width-max));
+
+  --card-font-size-h1: 120%;
+  --card-font-size-h2: 100%;
+  --card-font-size-p: 66%;
 }
 
-.banner p {
+/* ---------------------------- */
+/* Selectors                    */
+/* ---------------------------- */
+
+.banner .h1 {
+    font-size: var(--card-font-size-h1);
+}
+
+.banner .h2 {
+    font-size: var(--card-font-size-h2);
+}
+
+.banner .p {
+    font-size: var(--card-font-size-p);
     color: #ababab;
+}
+
+.banner .slider .item h1,
+.banner .slider .item h2,
+.banner .slider .item h3,
+.banner .slider .item p {
+    line-height: 1em;
 }
 
 .banner .golden {
@@ -14,18 +43,13 @@
 }
 
 .banner .glass {
-    /* Semi-transparent white */
     background: rgba(255, 255, 255, 0.1);
-    /* Blur effect for glass look */
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     /* Safari support */
     -webkit-backdrop-filter: blur(10px);
-    /* Subtle border */
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */ /* Soft shadow */
-    /* Optional: internal spacing */
-    padding: max(1vw, 10px);
+    padding: 0.5em;
 }
 
 .banner {
@@ -37,77 +61,45 @@
     position: relative;
 }
 
-:root {
-  --carousel-card-width: calc(100vw * 0.35);
-}
-
 /* ---------------------------------------------------- */
-/*  */
+/*                                                      */
 /* ---------------------------------------------------- */
-.banner {
-  transform: perspective(1000px) scale(0.75) translateY(300px);
-  /* transform: perspective(2000px) scale(0.75) translateY(300px); */
-}
-/* height: calc(var(--carousel-card-width) * 16 / 9);
-transform: translateY(-235px); */
-
-/* ---------------------------------------------------- */
-/* Calculations of container size.                      */
-/* - 100% of view port - n%                             */
-/* ---------------------------------------------------- */
-.banner .slider {
-    aspect-ratio: 16/9;
-    /* transform: rotateX(-18deg); */
-    /* transform: perspective(1000px); */
-    /* top: calc(min(100vw, 100vh) * 0.1); */
-    width: var(--carousel-card-width);
-    /* transform-origin: center center -2000px; */
-}
-
-/* ---------------------------------------------------- */
-/* Calculations of card width, et.                      */
-/* - rotateY   ; rotation of card circle                */
-/* - translateZ: diameter of circle based on card width */
-/* ---------------------------------------------------- */
-.banner .slider .item {
-    transform: 
-        rotateY(calc( (var(--position) - 1) * (360deg / var(--quantity)) ))
-        translateZ(calc( var(--carousel-card-width) / (2 * sin(180deg / var(--quantity))) ));
-    font-size: calc(100vw * 0.0125);
-}
 
 .banner .slider {
-    position: absolute;
-    transform-style: preserve-3d;
-    animation-delay: 0ms;
-    z-index: 2;
-    opacity: 1;
-    visibility: visible;
-    user-select: none;
+  position: relative;
+  transform-style: preserve-3d;
+  animation-delay: 0ms;
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+  user-select: none;
+
+  /* ---------------------------------------------------- */
+  /* Calculations of container size.                      */
+  /* - 100% of view port - n%                             */
+  /* ---------------------------------------------------- */
+  top: calc(100dvh * 0.05);
+  aspect-ratio: 16/9;
+  width: var(--card-width);
 }
 
 .banner .slider .item {
-    cursor: pointer !important;
-    position: absolute;
-    inset: 0 0 0 0;
-    box-shadow: 0 2.2rem 3.25rem rgba(255, 254, 247, 0.15);
-    user-select: none;
-    line-height: normal;
-}
-
-
-
-/* .banner .slider .item::after {
-  content: '';
   position: absolute;
-  bottom: -100px;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
-  transform: rotateX(90deg) translateZ(-100px);
-  filter: blur(10px);
-} */
+  cursor: pointer !important;
+  inset: 0 0 0 0;
+  /* box-shadow: 0 0.2rem 1rem rgba(255, 254, 247, 0.15); */
+  user-select: none;
+  line-height: normal;
+  
+  /* ---------------------------------------------------- */
+  /* Calculations of card width, et.                      */
+  /* - rotateY   ; rotation of card circle                */
+  /* - translateZ: diameter of circle based on card width */
+  /* ---------------------------------------------------- */
+  transform: 
+        rotateY(calc( (var(--position) - 1) * (360deg / var(--quantity)) ))
+        translateZ(calc( var(--card-width) / (2 * sin(180deg / var(--quantity))) ));
+}
 
 .banner .slider .item img {
     width: 100%;
@@ -128,11 +120,4 @@ transform: translateY(-235px); */
         100% 100%,
         0% 100%
       ); */
-}
-
-.banner .slider .item h1,
-.banner .slider .item h2,
-.banner .slider .item h3,
-.banner .slider .item p {
-    line-height: 1em;
 }

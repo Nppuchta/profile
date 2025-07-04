@@ -4,9 +4,19 @@
 
 page {
   display: none;
-  color: var(--theme-color-page);
+  min-height: 100dvh;
+  padding-inline: 10px;
+  margin-inline: auto;
   flex: 1;
-  border: 1px solid yellowgreen;
+  color: var(--theme-color-page);
+  background-image: url("../images/background-wave-1.png");
+  background-position-y: -2em;
+  background-repeat: repeat;
+  background-size: contain;
+  /* border: solid 1px red; */
+  /* background-blend-mode: luminosity; */
+  /* filter: brightness(0.25) hue-rotate(335deg); */
+  filter: hue-rotate(335deg);
 }
 
 page.active {
@@ -15,11 +25,8 @@ page.active {
 
 /* Goes with: .app-icons div { justify-content: end; } */
 .app-icons {
+  min-width: 100%;
   text-align: right;
-}
-
-.app-icons h4 {
-  margin-bottom: var(--size-4);
 }
 
 .app-icons div {
@@ -27,6 +34,10 @@ page.active {
   gap: var(--size-2);
   justify-content: end;
 }
+
+.app-icons h4 {
+  margin-bottom: var(--size-4);
+}  
 
 .app-icons img {
   border-width: 0;
@@ -44,12 +55,6 @@ page.active {
   padding: max(1vw, 10px);
 }
 
-page.classroom,
-page.volcano,
-page.city-rain {
-  margin: var(--size-4);
-}
-
 /* --------------------------------------------------- */
 /* Home page                                           */
 /* --------------------------------------------------- */
@@ -60,20 +65,7 @@ page.home {
   overflow-y: scroll;
   justify-content: center;
   align-items: start;
-  width: 100vw;
-  height: 100dvh;
-}
-
-page.home .h1 {
-  font-size: var(--size-relative-10);
-}
-
-page.home .h3 {
-  font-size: var(--size-relative-8);
-}
-
-page.home .p {
-  font-size: var(--size-relative-4);
+  /* height: 100dvh; */
 }
 
 /* --------------------------------------------------- */
@@ -176,13 +168,20 @@ page div.content {
 
 page.biography {
   margin-inline: auto;
-}
-
-page.biography {
-  width: 60%;
-  /* margin-inline: auto; */
+  justify-items: center;
+  align-items: center;
   padding: 1rem;
   color: var(--theme-color-page);
+}
+
+page.biography div.spacer {
+  max-width: 80%;
+}
+
+@media (max-width: 800px) {
+  page.biography div.spacer{
+    max-width: 100%;
+  }
 }
 
 page.biography h1 {
@@ -196,11 +195,4 @@ page.biography p {
   margin-bottom: var(--size-4);
   display: block;
   width: auto;
-}
-
-@media (max-width: 800px) {
-  page.biography {
-    width: 100%;
-    margin-inline: auto;
-  }
 }

@@ -27,6 +27,7 @@ header {
 }
 
 header button {
+  font-size: var(--font-size-4);
   background-color: transparent;
   vertical-align: middle;
 }
@@ -42,3 +43,4 @@ header button img.logo-linkedin {
 .header button.btn-mobile-menu-open {
   margin-left: 1em;
 }
+

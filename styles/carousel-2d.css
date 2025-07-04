@@ -2,7 +2,6 @@
 .carousel-2d {
   position: relative;
   width: 100%;
-  max-width: 600px;
   overflow: hidden;
   touch-action: pan-x;
 }
