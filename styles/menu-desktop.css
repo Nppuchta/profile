@@ -32,12 +32,16 @@ header button {
   vertical-align: middle;
 }
 
+header button img.logo-personal {
+  width: 4rem;
+}
+
 header button img.logo-artstation {
-  width: var(--font-size-6);
+  width: 3rem;
 }
 
 header button img.logo-linkedin {
-  width: var(--font-size-3);
+  width: 2rem;
 }
 
 .header button.btn-mobile-menu-open {
