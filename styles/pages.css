@@ -185,13 +185,13 @@ page.biography div.spacer {
 }
 
 page.biography h1 {
-  font-size: var(--size-relative-10);
+  font-size: var(--size-8);
   margin-bottom: var(--size-4);
 }
 
 page.biography div.p,
 page.biography p {
-  font-size: var(--size-relative-7);
+  font-size: var(--size-5);
   margin-bottom: var(--size-4);
   display: block;
   width: auto;
