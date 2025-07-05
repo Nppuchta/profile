@@ -29,6 +29,7 @@ class MenuController {
       li.addEventListener('click', this.closeMobileMenu.bind(this))
     });
     document.addEventListener('click', this.closeOnClickOutside.bind(this));
+    window.addEventListener('orientationchange', this.closeMobileMenu.bind(this));
   }
 
   closeOnClickOutside(e) {
@@ -57,6 +58,7 @@ class MenuController {
     this.menuLiElements.forEach(li => li.removeEventListener('click', this.closeMobileMenu));
     this.scrollElement.removeEventListener('scroll', this.deleteMe);
     document.removeEventListener('click', this.closeOnClickOutside);
+    window.removeEventListener('orientationchange', this.closeMobileMenu);
   }
 }
 

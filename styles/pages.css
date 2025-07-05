@@ -177,7 +177,7 @@ page.biography div.spacer {
 }
 
 @media (max-width: 800px) {
-  page.biography div.spacer{
+  page.biography div.spacer {
     max-width: 100%;
   }
 }
