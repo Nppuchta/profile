@@ -9,6 +9,7 @@ page {
   margin-inline: auto;
   flex: 1;
   color: var(--theme-color-page);
+  font-size: var(--font-size-4);
   background-image: url("../images/background-wave-1.png");
   background-position-y: -2em;
   background-repeat: repeat;
@@ -191,7 +192,6 @@ page.biography h1 {
 
 page.biography div.p,
 page.biography p {
-  font-size: var(--size-5);
   margin-bottom: var(--size-4);
   display: block;
   width: auto;
