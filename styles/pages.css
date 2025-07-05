@@ -165,20 +165,14 @@ page div.content {
 /* Bio page                                            */
 /* --------------------------------------------------- */
 
-page.biography {
-  margin-inline: auto;
-  justify-items: center;
-  align-items: center;
-  color: var(--theme-color-page);
-}
-
-page.biography div.spacer {
-  max-width: 80%;
+page.biography production {
+  display: grid;
+  padding-inline: clamp(1%, 13%, 30%);
 }
 
 @media (max-width: 800px) {
-  page.biography div.spacer {
-    max-width: 100%;
+  page.biography production {
+    padding-inline: unset;
   }
 }
 
