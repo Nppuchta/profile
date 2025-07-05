@@ -1,9 +1,8 @@
 :root {
   --theme-color: var(--sand-5);
   --theme-color-page: var(--sand-3);
+  --theme-color-subtle: var(--sand-7);
   --theme-color-muted: var(--sand-9);
   --theme-color-menu-mobile: var(--sand-1);
   --theme-background-highlight: var(--sand-3);
-
-  /* --theme-font-size-h1: var(--font-size-7); */
 }

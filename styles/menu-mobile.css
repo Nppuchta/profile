@@ -62,7 +62,7 @@
 }
 
 .menu-mobile ul li:not(:last-child) {
-  border-bottom: 1px solid var(--theme-color-muted);
+  border-bottom: 2px solid var(--theme-color-subtle);
 }
 
 .menu-mobile ul li:not(:first-child):hover {
@@ -91,7 +91,7 @@
 }
 
 .menu-mobile img.logo-artstation {
-  width: 3rem;
+  width: 2rem;
 }
 .menu-mobile img.logo-linkedin {
   width: 2rem;

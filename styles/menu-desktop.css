@@ -36,13 +36,8 @@ header button img.logo-personal {
   width: 4rem;
 }
 
-header button img.logo-artstation {
-  width: 3rem;
-  min-width: 3rem;
-}
-
+header button img.logo-artstation,
 header button img.logo-linkedin {
-  width: 2rem;
   width: 2rem;
 }
 
