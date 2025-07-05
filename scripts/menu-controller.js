@@ -19,31 +19,44 @@ class MenuController {
   addEventListeners() {
     this.mobileNav = document.querySelector('.menu-mobile');
     if (!this.mobileNav) throw 'Mobile selector not found!';
-    const openBtn = document.querySelector('.btn-mobile-menu-open');
-    const closeBtn = document.querySelector('.btn-mobile-menu-close');
+    this.openBtn = document.querySelector('.btn-mobile-menu-open');
+    this.closeBtn = document.querySelector('.btn-mobile-menu-close');
     
-    openBtn.addEventListener('click', () => this.mobileNav.classList.add('open'));
-    closeBtn.addEventListener('click', () => this.mobileNav.classList.remove('open'));
-    
-    document.addEventListener('click', (e) => {
-      if (this.mobileNav.classList.contains('open') && 
-          !this.mobileNav.contains(e.target) && 
-          !openBtn.contains(e.target)) {
-        this.mobileNav.classList.remove('open');
-      }
-    });
-
+    this.openBtn.addEventListener('click', this.openMobileMenu.bind(this));
+    this.closeBtn.addEventListener('click', this.closeMobileMenu.bind(this));
+    this.mobileNav.addEventListener('wheel', this.preventPropagation.bind(this));
     this.menuLiElements.forEach(li => {
-      li.addEventListener('click', (e) => this.closeMobileMenu(e))
+      li.addEventListener('click', this.closeMobileMenu.bind(this))
     });
+    document.addEventListener('click', this.closeOnClickOutside.bind(this));
   }
 
-  closeMobileMenu(e) {
+  closeOnClickOutside(e) {
+    if (this.mobileNav.classList.contains('open') && 
+        !this.mobileNav.contains(e.target) && 
+        !this.openBtn.contains(e.target)) {
+      this.mobileNav.classList.remove('open');
+    }
+  }
+
+  closeMobileMenu() {
     this.mobileNav.classList.remove('open');
   }
 
   openMobileMenu() {
     this.mobileNav.classList.add('open');
+  }
+
+  preventPropagation(e) {
+    e.stopPropagation(); /* Prevent event from bubbling to body */
+  }
+
+  destroy() {
+    this.openBtn.removeEventListener('click', this.openMobileMenu);
+    this.closeBtn.removeEventListener('click', this.closeMobileMenu);
+    this.menuLiElements.forEach(li => li.removeEventListener('click', this.closeMobileMenu));
+    this.scrollElement.removeEventListener('scroll', this.deleteMe);
+    document.removeEventListener('click', this.closeOnClickOutside);
   }
 }
 

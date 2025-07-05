@@ -28,6 +28,7 @@ page h1,
 page h2,
 page h3 {
   margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 /* Goes with: .app-icons div { justify-content: end; } */
@@ -168,7 +169,6 @@ page.biography {
   margin-inline: auto;
   justify-items: center;
   align-items: center;
-  padding: 1rem;
   color: var(--theme-color-page);
 }
 
