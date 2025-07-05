@@ -24,21 +24,18 @@ page.active {
   display: block;
 }
 
+page h1,
+page h2,
+page h3 {
+  margin-top: 2rem;
+}
+
 /* Goes with: .app-icons div { justify-content: end; } */
 .app-icons {
-  min-width: 100%;
-  text-align: right;
-}
-
-.app-icons div {
   display: flex;
   gap: var(--size-2);
-  justify-content: end;
+  justify-content: start;
 }
-
-.app-icons h4 {
-  margin-bottom: var(--size-4);
-}  
 
 .app-icons img {
   border-width: 0;
