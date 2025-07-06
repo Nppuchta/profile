@@ -49,13 +49,6 @@ body {
   filter: brightness(0.5) hue-rotate(335deg);
 }
 
-/* @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
-  div.content-wrapper {
-    -webkit-backdrop-filter: hue-rotate(335deg);
-    backdrop-filter: hue-rotate(335deg);
-  }
-} */
-
 a {
   text-decoration: none;
   padding: var(--size-1);

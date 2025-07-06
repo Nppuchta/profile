@@ -8,9 +8,9 @@
   --card-width-desired: calc(100vw * var(--card-width-factor));
   --card-width: min(var(--card-width-desired), var(--card-width-max));
 
-  --card-font-size-h1: calc(var(--card-width) * 0.06);
-  --card-font-size-h2: calc(var(--card-width) * 0.05);
-  --card-font-size-p: calc(var(--card-width) * 0.03);
+  --card-font-size-h1: 120%;
+  --card-font-size-h2: 100%;
+  --card-font-size-p: 66%;
 }
 
 /* ---------------------------- */
@@ -22,10 +22,6 @@
 }
 
 .banner .h2 {
-    font-size: var(--card-font-size-h2);
-}
-
-.banner .h3 {
     font-size: var(--card-font-size-h2);
 }
 
@@ -53,7 +49,7 @@
     -webkit-backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    padding: 0.5em;
+    padding: var(--glass-frame-border-width);
 }
 
 .banner {

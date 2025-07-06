@@ -1,3 +1,5 @@
 :root {
   --width-available-max: 1200px;
+  
+  --glass-frame-border-width: 13px;
 }

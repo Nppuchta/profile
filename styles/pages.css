@@ -10,11 +10,6 @@ page {
   flex: 1;
   color: var(--theme-color-page);
   font-size: var(--font-size-4);
-
-  /* border: solid 1px red; */
-  /* background-blend-mode: luminosity; */
-  /* filter: brightness(0.25) hue-rotate(335deg); */
-  filter: hue-rotate(335deg);
 }
 
 page.active {
@@ -48,7 +43,7 @@ page .glass {
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--size-3);
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */ /* Soft shadow */
-  padding: max(1vw, 10px);
+  padding: var(--glass-frame-border-width);
 }
 
 /* --------------------------------------------------- */
