@@ -23,14 +23,10 @@ page h3 {
   margin-bottom: 1rem;
 }
 
-.p ~ .p {
-  margin-top: 1em;
-}
-
 page p {
   font-size: inherit;
   margin-block: var(--size-2);
-  font-size: var(--font-size-4);
+  font-size: inherit;
 }
 
 page.p ~ p {
@@ -65,7 +61,7 @@ page .glass {
 }
 
 page div.content {
-  /* see selector .p::first-letter */
+  /* see selector "page p::first-letter" */
   margin-top: 0.5rem;
 }
 
