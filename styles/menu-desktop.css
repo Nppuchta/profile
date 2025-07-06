@@ -15,6 +15,16 @@ header {
   white-space: nowrap;
 } */
 
+header img.logo-personal {
+  transition: transform, 300ms ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(154, 145, 120, 0.1));
+}
+
+header img.logo-personal:hover {
+  transform: scale(2) translateY(15%);
+  filter: drop-shadow(0 15px 20px rgba(154, 145, 120, 0.2));
+}
+
 .title img {
   width: 4em;
 }

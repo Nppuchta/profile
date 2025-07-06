@@ -45,6 +45,14 @@ class PageController {
       const pageClassName = pageInfo['pageKey'];
       this.switchToPage(null, pageClassName, pageHash);
     });
+    window.addEventListener('scroll', () => {
+      const container = document.querySelector('.main-container');
+      const scrollPosition = window.scrollY;
+      // Adjust background-position-y: slower movement (e.g., 0.2x scroll speed)
+      // The psudo element has access to the parents style attributes
+      // and uses background-position-y: var(--bg-position-y, 0);
+      container.style.setProperty('--bg-position-y', `${scrollPosition * 0.2}px`);
+    });
   }
 
   setupUrlHashToPageMap() {
