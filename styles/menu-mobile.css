@@ -20,6 +20,14 @@
 
 .menu-mobile::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
+  width: 0; /* Hide scrollbar width in Chrome, Edge */
+  background: transparent; /* Remove any track background */
+}
+
+.menu-mobile::-webkit-scrollbar-thumb,
+.menu-mobile::-webkit-scrollbar-track,
+.menu-mobile::-webkit-scrollbar-button {
+  display: none; /* Explicitly hide thumb, track, and buttons */
 }
 
 .menu-mobile.glass {
