@@ -5,4 +5,6 @@
   --theme-color-muted: var(--sand-9);
   --theme-color-menu-mobile: var(--sand-1);
   --theme-background-highlight: var(--sand-3);
+
+  --theme-color-first-letter: var(--sand-1);
 }

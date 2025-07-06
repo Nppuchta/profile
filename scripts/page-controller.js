@@ -107,6 +107,7 @@ const pageController = new PageController(pageElements, {
     '.page-2': 'btn-city-rain',
     '.page-3': 'btn-volcano',
     '.page-4': 'btn-classroom',
-    '.page-5': 'btn-bio'
+    '.page-5': 'btn-bio',
+    '.page-6': 'btn-octopus-lady',
   }
 });
