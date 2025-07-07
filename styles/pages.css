@@ -121,24 +121,8 @@ page.home {
 
 page.city-rain production {
   display: grid;
-  gap: var(--size-3);
-  grid-template-columns: 1fr 2fr;
   max-width: 50rem;
   margin-inline: auto;
-}
-
-page.city-rain production .grid-col-span-2 {
-  grid-column: span 2;
-}
-
-@media (max-width: 800px) {
-  page.city-rain production {
-    grid-template-columns: 1fr;
-  }
-
-  page.city-rain production .grid-col-span-2 {
-    grid-column: span 1;
-  }
 }
 
 /* --------------------------------------------------- */
@@ -147,24 +131,8 @@ page.city-rain production .grid-col-span-2 {
 
 page.volcano production {
   display: grid;
-  gap: var(--size-3);
-  grid-template-columns: 1fr 2fr;
   max-width: 50rem;
   margin-inline: auto;
-}
-
-page.volcano production .grid-col-span-2 {
-  grid-column: span 2;
-}
-
-@media (max-width: 800px) {
-  page.volcano production {
-    grid-template-columns: 1fr;
-  }
-
-  page.volcano production .grid-col-span-2 {
-    grid-column: span 1;
-  }
 }
 
 /* --------------------------------------------------- */
@@ -173,24 +141,8 @@ page.volcano production .grid-col-span-2 {
 
 page.classroom production {
   display: grid;
-  gap: var(--size-3);
-  grid-template-columns: 1fr 2fr;
   max-width: 50rem;
   margin-inline: auto;
-}
-
-page.classroom production .grid-col-span-2 {
-  grid-column: span 2;
-}
-
-@media (max-width: 800px) {
-  page.classroom production {
-    grid-template-columns: 1fr;
-  }
-
-  page.classroom production .grid-col-span-2 {
-    grid-column: span 1;
-  }
 }
 
 /* --------------------------------------------------- */
@@ -218,7 +170,7 @@ page.biography production {
   }
 }
 
-page.biography h1 {
+/* page.biography h1 {
   font-size: var(--size-8);
   margin-bottom: var(--size-4);
-}
+} */
