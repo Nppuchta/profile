@@ -69,11 +69,37 @@ page div.content img {
   width: 100%;
 }
 
-.float-top-right {
+/* --------------------------------------------------- */
+/* top right floating content                          */
+/* --------------------------------------------------- */
+
+.illustration-container {
+  display: flow;
+}
+
+.illustration-float {
   float: right;
   width: 66%;
   shape-outside: margin-box;
   margin-left: 1rem;
+  margin-block: var(--size-4);
+}
+
+.illustration-float img {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .illustration-container {
+    display: grid;
+  }
+
+  .illustration-float {
+    float: none;
+    width: 100%;
+    order: 2;
+    margin-left: 0;
+  }
 }
 
 /* --------------------------------------------------- */
@@ -173,24 +199,8 @@ page.classroom production .grid-col-span-2 {
 
 page.octopus-lady production {
   display: grid;
-  gap: var(--size-3);
-  grid-template-columns: 1fr 2fr;
   max-width: 50rem;
   margin-inline: auto;
-}
-
-page.octopus-lady production .grid-col-span-2 {
-  grid-column: span 2;
-}
-
-@media (max-width: 800px) {
-  page.octopus-lady production {
-    grid-template-columns: 1fr;
-  }
-
-  page.octopus-lady production .grid-col-span-2 {
-    grid-column: span 1;
-  }
 }
 
 /* --------------------------------------------------- */
