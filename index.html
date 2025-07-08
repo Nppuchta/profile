@@ -21,18 +21,18 @@
       </div>
 
       <nav class="menu-desktop">
-        <button class="hide-on-mobile page-nav btn-home btn-border-pop">Home</button>
-        <button class="hide-on-mobile page-nav btn-city-rain btn-border-pop">City Rain</button>
-        <button class="hide-on-mobile page-nav btn-volcano">Volcano</button>
-        <button class="hide-on-mobile page-nav btn-classroom">Classroom</button>
-        <button class="hide-on-mobile page-nav btn-octopus-lady">Octopus</button>
-        <button class="hide-on-mobile page-nav btn-bio">Bio</button>
+        <button class="hide-on-mobile btn-home btn-border-pop">Home</button>
+        <button class="hide-on-mobile btn-city-rain btn-border-pop">City Rain</button>
+        <button class="hide-on-mobile btn-volcano">Volcano</button>
+        <button class="hide-on-mobile btn-classroom">Classroom</button>
+        <button class="hide-on-mobile btn-octopus-lady">Octopus</button>
+        <button class="hide-on-mobile btn-bio">Bio</button>
 
-        <button onclick="window.open('https://www.artstation.com/naomipuchta6', '_blank')">
+        <button class="mobile-menu btn-external btn-artstation" data-external-id="artstation">
           <img class="logo-artstation" src="icons/art-station-logomark-white.svg">
         </button>
     
-        <button onclick="window.open('https://www.linkedin.com/in/naomipuchta', '_blank')">
+        <button class="mobile-menu btn-external btn-linkedin" data-external-id="linkedin">
           <img class="logo-linkedin" src="icons/icon-linkedin-white-96.png">
         </button>
     
@@ -55,16 +55,16 @@
               </svg>
             </button>
           </li>
-          <li class="page-nav btn-home">Home</li>
-          <li class="page-nav btn-city-rain">City Rain</li>
-          <li class="page-nav btn-volcano">Volcano</li>
-          <li class="page-nav btn-classroom">Classroom</li>
-          <li class="page-nav btn-octopus-lady">Octopus Lady</li>
-          <li class="page-nav btn-bio">Bio</li>
-          <li onclick="window.open('https://www.artstation.com/naomipuchta6', '_blank')">
+          <li class="mobile-menu btn-home">Home</li>
+          <li class="mobile-menu btn-city-rain">City Rain</li>
+          <li class="mobile-menu btn-volcano">Volcano</li>
+          <li class="mobile-menu btn-classroom">Classroom</li>
+          <li class="mobile-menu btn-octopus-lady">Octopus Lady</li>
+          <li class="mobile-menu btn-bio">Bio</li>
+          <li class="mobile-menu btn-external btn-artstation" data-external-id="artstation">
             <img class="logo-artstation" src="icons/art-station-logomark-white.svg">
           </li>
-          <li onclick="window.open('https://www.linkedin.com/in/naomipuchta', '_blank')">
+          <li class="mobile-menu btn-external btn-linkedin" data-external-id="linkedin">
             <img class="logo-linkedin" src="icons/icon-linkedin-white-96.png">
           </li>
         </ul>
@@ -75,31 +75,31 @@
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
 
-    <page class="page-1 home">
+    <page class="home">
       <div class="banner">
           <div class="slider" style="--quantity: 6">
-              <div class="item glass page-nav btn-octopus-lady" style="--position: 1">
+              <div class="btn-octopus-lady item glass" style="--position: 1">
                   <img src="images/octopus-lady/octopus-lady-concept-transparent.avif">
               </div>
-              <div class="item glass page-nav btn-octopus-lady" style="--position: 2">
+              <div class="btn-octopus-lady item glass" style="--position: 2">
                   <img src="images/octopus-lady/render-progress-2.avif">
               </div>
-              <div class="item glass page-nav btn-city-rain" style="--position: 3">
+              <div class="btn-city-rain item glass" style="--position: 3">
                   <video autoplay muted loop class="bg-video">
                       <source type="video/mp4" src="portfolio/npuchta-rain.mp4">
                   </video>
               </div>
-              <div class="item glass page-nav btn-volcano" style="--position: 4">
+              <div class="btn-volcano item glass" style="--position: 4">
                   <video autoplay muted loop class="bg-video">
                       <source type="video/mp4" src="portfolio/npuchta-volcano.mp4">
                   </video>
               </div>
-              <div class="item glass page-nav btn-classroom" style="--position: 5">
+              <div class="btn-classroom item glass" style="--position: 5">
                   <video autoplay muted loop class="bg-video">
                       <source type="video/mp4" src="portfolio/npuchta-classroom.mp4">
                   </video>
               </div>
-              <div class="item glass page-nav btn-octopus-lady" style="--position: 6">
+              <div class="btn-octopus-lady item glass" style="--position: 6">
                   <img src="images/octopus-lady/render-progress-2.avif">
               </div>
           </div>
@@ -110,7 +110,7 @@
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
 
-    <page class="page-2 city-rain">
+    <page class="city-rain">
       <production>
 
         <h3>City Rain</h3>
@@ -196,7 +196,7 @@
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
 
-    <page class="page-3 volcano">
+    <page class="volcano">
       <production>
 
         <h3>Volcano</h3>
@@ -246,7 +246,7 @@
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
 
-    <page class="page-4 classroom">
+    <page class="classroom">
       <production>
         <h3>Classroom</h3>
         <div class="glass">
@@ -338,7 +338,7 @@
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
 
-    <page class="page-6 octopus-lady">
+    <page class="octopus-lady">
       <production>
 
         <h3>Octopus Lady</h3>
@@ -528,7 +528,7 @@
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
 
-    <page class="page-5 biography">
+    <page class="bio">
       <production>
         <h3>About Me</h3>
         <p>
@@ -561,9 +561,8 @@
   </div>
 
   <script src="https://unpkg.com/htmx.org@2.0.3"></script>
-  <script src="scripts/menu-controller.js"></script>
-  <script src="scripts/page-controller.js"></script>
-  <script src="scripts/carousel-3d.js  "></script>
-  <script src="scripts/carousel-2d.js  "></script>
+  <script src="scripts/carousel-3d.js"></script>
+  <script src="scripts/carousel-2d.js"></script>
+  <script src="scripts/app-controller.js"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@ class Carousel3dController {
     this.element = element;
     this.quantity = Number.parseInt(element.style.getPropertyValue('--quantity'));
     this.options = {
-      sensitivity: 0.5,
-      friction: 0.95,
+      sensitivity: 5,
+      friction: 10,
       baseRotateX: -16,
       perspective: 1000,
       velocityThreshold: 0.1,
