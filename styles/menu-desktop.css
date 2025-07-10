@@ -51,6 +51,10 @@ header img.logo-personal:hover {
   100% { transform: scale(1); } /* Back to original */
 }
 
+header button img.logo-resume {
+  height: 2rem;
+}
+
 header button img.logo-artstation {
   width: 2rem;
   filter: grayscale(100%) sepia(100%) hue-rotate(373deg) saturate(60%) brightness(79%);

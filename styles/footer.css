@@ -1,8 +1,20 @@
 footer {
-  padding: 0;
+  display: grid;
   color: var(--theme-color-muted);
   font-size: var(--font-size-0);
-  margin: var(--size-4) var(--size-2);
   background: transparent;
-  text-align: center;
+  margin: var(--size-4) var(--size-2);
+}
+footer div {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+footer div:last-child a {
+  display: inline-flex;
+  gap: 1rem;
+}
+footer div:last-child a img {
+  height: 1.5rem;
 }

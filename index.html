@@ -22,6 +22,10 @@
         linkedin: {
           url: 'https://www.linkedin.com/in/naomipuchta',
           newTab: true,
+        },
+        resume: {
+          url: 'docs/resume-puchta-naomi.pdf',
+          newTab: true,
         }
       }
     };
@@ -40,9 +44,13 @@
         <button class="hide-on-mobile btn-projects btn-border-pop">Projects</button>
         <button class="hide-on-mobile btn-biography">Bio</button>
 
+        <button class="mobile-menu btn-external btn-resume" data-external-id="resume">
+          <img class="logo-resume" src="icons/icon-pdf.avif">
+        </button>
+
         <button class="mobile-menu btn-external btn-artstation" data-external-id="artstation">
           <img class="logo-artstation" src="icons/icon-art-station-logomark-white.svg">
-        </button>
+        </button>  
     
         <button class="mobile-menu btn-external btn-linkedin" data-external-id="linkedin">
           <img class="logo-linkedin" src="icons/icon-linkedin-white-96.png">
@@ -70,6 +78,10 @@
           <li class="mobile-menu btn-octopus-lady">WIPS</li>
           <li class="mobile-menu btn-projects">Projects</li>
           <li class="mobile-menu btn-biography">Bio</li>
+
+          <li class="mobile-menu btn-external btn-resume" data-external-id="resume">
+            <img class="logo-resume" src="icons/icon-pdf.avif">
+          </li>
           <li class="mobile-menu btn-external btn-artstation" data-external-id="artstation">
             <img class="logo-artstation" src="icons/icon-art-station-logomark-white.svg">
           </li>
@@ -613,6 +625,11 @@
 
     <footer>
       <div>© 2025 - VFX Portfolio - Naomi Puchta</div>
+      <div>
+        <a href="docs/resume-puchta-naomi.pdf">
+          My Resume <img src="icons/icon-pdf.avif" target="_blank">
+        </a>
+      </div>
     </footer>
 
   </div>
