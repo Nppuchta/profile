@@ -95,7 +95,7 @@ page div.content img {
 
   .illustration-float {
     float: none;
-    width: 100%;
+    width: 100% !important;
     order: 2;
     margin-left: 0;
   }
