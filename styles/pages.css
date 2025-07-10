@@ -115,6 +115,20 @@ page.home {
 }
 
 /* --------------------------------------------------- */
+/* Projects                                      */
+/* --------------------------------------------------- */
+
+page.projects production {
+  display: grid;
+  max-width: 50rem;
+  margin-inline: auto;
+}
+
+page.projects production .illustration-float {
+  width: 44%;
+}
+
+/* --------------------------------------------------- */
 /* City rain page                                      */
 /* --------------------------------------------------- */
 

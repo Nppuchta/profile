@@ -30,7 +30,10 @@ class AppController {
     this.pages.forEach(page => {
       const pageClass = this.extractAndValidatePageClass(page);
       const btnList = Array.from(document.querySelectorAll(`.btn-${pageClass}`));
-      btnList.forEach(btn => this.addEventListener(btn, pageClass));
+      btnList.forEach(btn => {
+        this.addEventListener(btn, pageClass);
+        btn.style.cursor = 'pointer';
+      });
     });
     if (!this.state.pageClassSet.has(this.options.defaultPage)) {
       throw `Application is missing default page with class "${this.options.defaultPage}"`;
