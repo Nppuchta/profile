@@ -19,8 +19,7 @@ page.active {
 page h1,
 page h2,
 page h3 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-block: 2rem 1rem;
 }
 
 page p {
@@ -161,6 +160,8 @@ page.octopus-lady production {
 
 page.biography production {
   display: grid;
+  max-width: 50rem;
+  margin-inline: auto;
   padding-inline: clamp(1%, 13%, 30%);
 }
 

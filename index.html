@@ -11,6 +11,21 @@
   <link rel="apple-touch-icon" href="icons/favicon-32x32.png">
   <style>
   </style>
+  <script>
+    options = {
+      defaultPage: 'home',
+      externalLinks: {
+        artstation: {
+          url: 'https://www.artstation.com/naomipuchta6',
+          newTab: true,
+        },
+        linkedin: {
+          url: 'https://www.linkedin.com/in/naomipuchta',
+          newTab: true,
+        }
+      }
+    };
+  </script>
 </head>
 <body>
   <div class="main-container">
@@ -26,10 +41,10 @@
         <button class="hide-on-mobile btn-volcano">Volcano</button>
         <button class="hide-on-mobile btn-classroom">Classroom</button>
         <button class="hide-on-mobile btn-octopus-lady">Octopus</button>
-        <button class="hide-on-mobile btn-bio">Bio</button>
+        <button class="hide-on-mobile btn-biography">Bio</button>
 
         <button class="mobile-menu btn-external btn-artstation" data-external-id="artstation">
-          <img class="logo-artstation" src="icons/art-station-logomark-white.svg">
+          <img class="logo-artstation" src="icons/icon-art-station-logomark-white.svg">
         </button>
     
         <button class="mobile-menu btn-external btn-linkedin" data-external-id="linkedin">
@@ -60,9 +75,9 @@
           <li class="mobile-menu btn-volcano">Volcano</li>
           <li class="mobile-menu btn-classroom">Classroom</li>
           <li class="mobile-menu btn-octopus-lady">Octopus Lady</li>
-          <li class="mobile-menu btn-bio">Bio</li>
+          <li class="mobile-menu btn-biography">Bio</li>
           <li class="mobile-menu btn-external btn-artstation" data-external-id="artstation">
-            <img class="logo-artstation" src="icons/art-station-logomark-white.svg">
+            <img class="logo-artstation" src="icons/icon-art-station-logomark-white.svg">
           </li>
           <li class="mobile-menu btn-external btn-linkedin" data-external-id="linkedin">
             <img class="logo-linkedin" src="icons/icon-linkedin-white-96.png">
@@ -79,31 +94,52 @@
       <div class="banner">
           <div class="slider" style="--quantity: 6">
               <div class="btn-octopus-lady item glass" style="--position: 1">
-                  <img src="images/octopus-lady/octopus-lady-concept-transparent.avif">
+                  <img src="portfolio/octopus-lady/octopus-lady-concept-transparent.avif">
               </div>
               <div class="btn-octopus-lady item glass" style="--position: 2">
-                  <img src="images/octopus-lady/render-progress-2.avif">
+                  <img src="portfolio/octopus-lady/render-progress-2.avif">
               </div>
               <div class="btn-city-rain item glass" style="--position: 3">
                   <video autoplay muted loop class="bg-video">
-                      <source type="video/mp4" src="portfolio/npuchta-rain.mp4">
+                      <source type="video/mp4" src="portfolio/city-rain/npuchta-rain.mp4">
                   </video>
               </div>
               <div class="btn-volcano item glass" style="--position: 4">
                   <video autoplay muted loop class="bg-video">
-                      <source type="video/mp4" src="portfolio/npuchta-volcano.mp4">
+                      <source type="video/mp4" src="portfolio/volcano/npuchta-volcano.mp4">
                   </video>
               </div>
               <div class="btn-classroom item glass" style="--position: 5">
                   <video autoplay muted loop class="bg-video">
-                      <source type="video/mp4" src="portfolio/npuchta-classroom.mp4">
+                      <source type="video/mp4" src="portfolio/classroom/npuchta-classroom.mp4">
                   </video>
               </div>
               <div class="btn-octopus-lady item glass" style="--position: 6">
-                  <img src="images/octopus-lady/render-progress-2.avif">
+                  <img src="portfolio/octopus-lady/render-progress-2.avif">
               </div>
           </div>
       </div>    
+    </page>
+
+    <!-- ------------------------------------------------------- -->
+    <!-- Page                                                    -->
+    <!-- ------------------------------------------------------- -->
+
+    <page class="projects">
+      <production>
+
+        <h3>Projects</h3>
+
+        <div class="project-list">
+          <dl>
+            <li><img src=""></li>
+            <li><img src=""></li>
+            <li><img src=""></li>
+            <li><img src=""></li>
+          </dl>
+        </div>
+
+      </production>
     </page>
 
     <!-- ------------------------------------------------------- -->
@@ -116,7 +152,7 @@
         <h3>City Rain</h3>
         <div class="glass">
           <video controls muted loop class="bg-video">
-            <source type="video/mp4" src="portfolio/npuchta-rain.mp4">
+            <source type="video/mp4" src="portfolio/city-rain/npuchta-rain.mp4">
           </video>
         </div>
 
@@ -141,7 +177,7 @@
         <h3>Modeling</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/city-rain/modeling.avif" class="glass">
+            <img src="portfolio/city-rain/modeling.avif" class="glass">
           </div>
           <p>
             I first began modeling out the buildings, assets, and pathway in
@@ -155,7 +191,7 @@
         <h3>Texturing</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/city-rain/texturing.avif" class="glass">
+            <img src="portfolio/city-rain/texturing.avif" class="glass">
           </div>
           <p>
             Once this was complete, I took each asset into Substance painter
@@ -169,7 +205,7 @@
         <h3>Into Houdini</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/city-rain/houdini.avif" class="glass">
+            <img src="portfolio/city-rain/houdini.avif" class="glass">
           </div>
           <p>
             Then I began working on the simulations: trickling rain, main rain,
@@ -180,7 +216,7 @@
         <h3>Compositing</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/city-rain/compositing.avif" class="glass">
+            <img src="portfolio/city-rain/compositing.avif" class="glass">
           </div>
           <p>
             Since only so much could be done with texturing, I took the final
@@ -202,7 +238,7 @@
         <h3>Volcano</h3>
         <div class="glass">
           <video controls muted loop class="bg-video">
-            <source type="video/mp4" src="portfolio/npuchta-volcano.mp4">
+            <source type="video/mp4" src="portfolio/volcano/npuchta-volcano.mp4">
           </video>
         </div>
 
@@ -229,7 +265,7 @@
         <h3>Modeling</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/city-rain/modeling.avif" class="glass">
+            <img src="portfolio/city-rain/modeling.avif" class="glass">
           </div>
           <p>
             To do. Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -251,7 +287,7 @@
         <h3>Classroom</h3>
         <div class="glass">
           <video controls muted loop class="bg-video">
-            <source type="video/mp4" src="portfolio/npuchta-classroom.mp4">
+            <source type="video/mp4" src="portfolio/classroom/npuchta-classroom.mp4">
           </video>
         </div>
 
@@ -276,12 +312,12 @@
             <div class="glass">
               <div class="carousel-2d">
                 <div class="carousel-2d-container">
-                  <img class="carousel-2d-image" src="images/classroom/carousel/modeling-1.png" alt="Modeling 1">
-                  <img class="carousel-2d-image" src="images/classroom/carousel/modeling-2.png" alt="Modeling 2">
-                  <img class="carousel-2d-image" src="images/classroom/carousel/modeling-3.png" alt="Modeling 3">
-                  <img class="carousel-2d-image" src="images/classroom/carousel/modeling-4.png" alt="Modeling 4">
-                  <img class="carousel-2d-image" src="images/classroom/carousel/modeling-5.png" alt="Modeling 5">
-                  <img class="carousel-2d-image" src="images/classroom/carousel/modeling-6.png" alt="Modeling 6">
+                  <img class="carousel-2d-image" src="portfolio/classroom/carousel/modeling-1.png" alt="Modeling 1">
+                  <img class="carousel-2d-image" src="portfolio/classroom/carousel/modeling-2.png" alt="Modeling 2">
+                  <img class="carousel-2d-image" src="portfolio/classroom/carousel/modeling-3.png" alt="Modeling 3">
+                  <img class="carousel-2d-image" src="portfolio/classroom/carousel/modeling-4.png" alt="Modeling 4">
+                  <img class="carousel-2d-image" src="portfolio/classroom/carousel/modeling-5.png" alt="Modeling 5">
+                  <img class="carousel-2d-image" src="portfolio/classroom/carousel/modeling-6.png" alt="Modeling 6">
                 </div>
                 <button class="arrow left-arrow">&#10094;</button>
                 <button class="arrow right-arrow">&#10095;</button>
@@ -298,7 +334,7 @@
         <h3>Texturing</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/classroom/classroom-texturing.avif" class="glass">
+            <img src="portfolio/classroom/classroom-texturing.avif" class="glass">
           </div>
           <p>
             Once this was done I initially finished the project by utilizing
@@ -311,7 +347,7 @@
         <h3>Houdini FX</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/classroom/classrom-houdini.avif" class="glass">
+            <img src="portfolio/classroom/classrom-houdini.avif" class="glass">
           </div>
           <p>
             I began by adding dust and debris into the air before introducing
@@ -322,7 +358,7 @@
         <h3>Rendering</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/classroom/classroom-rendering.avif" class="glass">
+            <img src="portfolio/classroom/classroom-rendering.avif" class="glass">
           </div>
           <p>
             Then I Rendered and composited the final scene, utilizing Zdepth,
@@ -343,7 +379,7 @@
 
         <h3>Octopus Lady</h3>
         <div>
-          <img src="images/octopus-lady/side-by-side-2.avif" class="glass">
+          <img src="portfolio/octopus-lady/side-by-side-2.avif" class="glass">
         </div>
 
         <h3>Breakdown</h3>
@@ -377,9 +413,9 @@
         <h3>Initial Concept</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/octopus-lady/octopus-lady-concept.avif" class="glass">
+            <img src="portfolio/octopus-lady/octopus-lady-concept.avif" class="glass">
             <br/>
-            <img src="images/octopus-lady/octopus-lady-references-transparent.avif" class="glass">
+            <img src="portfolio/octopus-lady/octopus-lady-references-transparent.avif" class="glass">
           </div>
           <p>
             I started out with a quick doodle of the concept, mainly focusing on
@@ -397,7 +433,7 @@
         <h3>Sculpt Progress</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/octopus-lady/sculpt-progress-1.avif" class="glass">
+            <img src="portfolio/octopus-lady/sculpt-progress-1.avif" class="glass">
           </div>
           <p>
             This was the first progress of the human sculpt. One setback during this
@@ -412,7 +448,7 @@
 
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/octopus-lady/sculpt-progress-2.avif" class="glass">
+            <img src="portfolio/octopus-lady/sculpt-progress-2.avif" class="glass">
           </div>
           <p>
             And this was the resulting face after another week (spending roughly 3~
@@ -430,9 +466,9 @@
         <h3>Texturing Progress</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/octopus-lady/texturing-progress-1a.avif" class="glass">
+            <img src="portfolio/octopus-lady/texturing-progress-1a.avif" class="glass">
             <br/>
-            <img src="images/octopus-lady/texturing-progress-1b.avif" class="glass">
+            <img src="portfolio/octopus-lady/texturing-progress-1b.avif" class="glass">
           </div>
           <p>
             The beginning process of texturing was done through Mari. Most of this
@@ -446,11 +482,11 @@
           <div class="illustration-float">
             <p>
               <strong>Before</strong>
-              <img src="images/octopus-lady/texturing-progress-2a.avif" class="glass">
+              <img src="portfolio/octopus-lady/texturing-progress-2a.avif" class="glass">
             </p>
             <p>
               <strong>After</strong>
-              <img src="images/octopus-lady/texturing-progress-2b.avif" class="glass">
+              <img src="portfolio/octopus-lady/texturing-progress-2b.avif" class="glass">
             </p>
           </div>
           <p>
@@ -464,7 +500,7 @@
         <h3>First Render</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/octopus-lady/render-progress-1.avif" class="glass">
+            <img src="portfolio/octopus-lady/render-progress-1.avif" class="glass">
           </div>
           <p>
             This was the first render that I did in Maya, mostly focusing on trying
@@ -480,7 +516,7 @@
 
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/octopus-lady/render-progress-2.avif" class="glass">
+            <img src="portfolio/octopus-lady/render-progress-2.avif" class="glass">
           </div>
           <p>
             There were a few iterations in between these two renders, however the main
@@ -497,7 +533,7 @@
         <h3>Extra Assets (Current Progress)</h3>
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/octopus-lady/hand-progress-1.avif" class="glass">
+            <img src="portfolio/octopus-lady/hand-progress-1.avif" class="glass">
           </div>
           <p>
             After taking a look at the scene itself, I started to realize that the renders
@@ -513,7 +549,7 @@
 
         <div class="illustration-container">
           <div class="illustration-float">
-            <img src="images/octopus-lady/hand-progress-2.avif" class="glass">
+            <img src="portfolio/octopus-lady/hand-progress-2.avif" class="glass">
           </div>
           <p>
             One thing to note is that the headshot will likely end up being a 3/4s view
@@ -528,7 +564,7 @@
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
 
-    <page class="bio">
+    <page class="biography">
       <production>
         <h3>About Me</h3>
         <p>

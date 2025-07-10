@@ -1,6 +1,4 @@
 class AppController {
-  static get DEFAULT_PAGE() { return 'home'; }
-
   constructor(pages, options = {}) {
     // dom elements
     this.pages = Array.from(pages);
@@ -34,8 +32,9 @@ class AppController {
       const btnList = Array.from(document.querySelectorAll(`.btn-${pageClass}`));
       btnList.forEach(btn => this.addEventListener(btn, pageClass));
     });
-    const defaultPage = AppController.DEFAULT_PAGE;
-    if (!this.state.pageClassSet.has(defaultPage)) throw `Application is missing default page with class "${defaultPage}"`;
+    if (!this.state.pageClassSet.has(this.options.defaultPage)) {
+      throw `Application is missing default page with class "${this.options.defaultPage}"`;
+    }
   }
 
   addMobileMenuListeners() {
@@ -68,7 +67,7 @@ class AppController {
 
   switchToUrlHashPage() {
     let pageClass = window.location.hash.toLowerCase().slice(1);
-    pageClass = this.state.pageClassSet.has(pageClass) ? pageClass : DEFAULT_PAGE;
+    pageClass = this.state.pageClassSet.has(pageClass) ? pageClass : this.options.defaultPage;
     this.switchToPage(pageClass);
   }
 
@@ -139,14 +138,4 @@ class AppController {
 }
 
 const pages = document.querySelectorAll('page');
-const appController = new AppController(pages, {
-  externalLinks: {
-    artstation: {
-      url: 'https://www.artstation.com/naomipuchta6',
-      newTab: true,
-    },
-    linkedin: {
-      url: 'https://www.linkedin.com/in/naomipuchta',
-      newTab: true,
-    }
-  }});
+const appController = new AppController(pages, {...options});
