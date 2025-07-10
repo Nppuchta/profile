@@ -40,9 +40,15 @@ header img.logo-personal {
 }
 
 header img.logo-personal:hover {
-  transform: scale(2) translateY(15%);
+  animation: scalePulse 1s ease;
   filter: drop-shadow(0 15px 20px rgba(154, 145, 120, 0.2));
   filter: grayscale(100%) sepia(100%) brightness(55%);
+}
+
+@keyframes scalePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); } /* Peak scale */
+  100% { transform: scale(1); } /* Back to original */
 }
 
 header button img.logo-artstation {
