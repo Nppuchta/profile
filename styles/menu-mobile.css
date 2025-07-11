@@ -55,7 +55,7 @@
 }
 
 .menu-mobile ul li:first-child svg {
-  fill: var(--sand-1);
+  fill: var(--sand-11);
   transform: scale(2);
 }
 
@@ -104,12 +104,12 @@
 
 .menu-mobile img.logo-artstation {
   width: 2rem;
-  filter: grayscale(100%) sepia(100%) hue-rotate(206.87deg) saturate(0.18) brightness(0.76);
+  filter: grayscale(100%) sepia(100%) hue-rotate(206.87deg) saturate(0.18) brightness(0.18);
 }
 
 .menu-mobile img.logo-linkedin {
   width: 2rem;
-  filter: invert(48%) sepia(13%) saturate(48%) hue-rotate(360deg);
+  filter: invert(48%) sepia(13%) saturate(48%) hue-rotate(360deg) brightness(0.18);
 }
 
 @media (max-width: 700px) {

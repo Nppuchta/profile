@@ -1,0 +1,136 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--height-header);
+  padding: var(--size-3) 0;
+  padding-inline: var(--size-4);
+  background: var(--sand-12);
+  border-bottom: 1px solid var(--sand-11);
+  opacity: 0.7;
+
+  
+  img.logo-personal {
+    width: 4rem;
+    transition: transform, 300ms ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(154, 145, 120, 0.1));
+    filter: grayscale(100%) sepia(100%) brightness(55%);
+  }
+  
+  img.logo-personal:hover {
+    animation: scalePulse 1s ease;
+    filter: drop-shadow(0 15px 20px rgba(154, 145, 120, 0.2));
+    filter: grayscale(100%) sepia(100%) brightness(55%);
+  }
+}
+
+
+
+/*
+ * == Show header on scroll up, hide on scroll down ==
+ * == Author: Fabrizio Calderan
+ * == https://www.linkedin.com/in/fabriziocalderan/
+ * == https://fabrizio.dev/
+ *
+ * It requires scroll-animations, @property support
+ * (now in baseline) and style queries: as of today 
+ * (2024.11.04) it works on latest Chrome, Edge and
+ * Opera.
+ *
+ * Work based on this article by @bramus
+ * https://www.bram.us/2023/10/23/css-scroll-detection/
+ * https://codepen.io/fcalderan/full/LYKwyyd
+ * https://codepen.io/fcalderan/pen/LYKwyyd
+ */
+
+@property --scroll {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0;
+}
+
+@property --scroll-delayed {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0;
+}
+
+@property --scroll-direction {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0;
+}
+
+@keyframes setScrollProps {
+	to {
+		--scroll: 1000;
+		--scroll-delayed: 1000;
+	}
+}
+
+:root {
+	animation: setScrollProps linear both;
+	animation-timeline: scroll(root);
+   --header-effect-duration: .5s;
+}
+
+body {
+   transition: --scroll-delayed calc(var(--header-effect-duration) + .1s);
+   /* the transition of the header should last a 
+    * bit less than this transition otherwise, for 
+    * extremely small scroll movements, the header 
+    * won't be fully revealed or hidden (that's 
+    * the reason for a + .1 sec. here)
+    */
+   
+   --scroll-velocity: calc(var(--scroll) - var(--scroll-delayed));
+   --scroll-speed: max(var(--scroll-velocity), -1 * var(--scroll-velocity));
+   --scroll-direction: calc(var(--scroll-velocity) / var(--scroll-speed));
+}
+
+header {
+   position: fixed;
+   z-index: 1;
+   inset: 0 0 auto;
+   will-change: transform;
+   transition: transform var(--header-effect-duration) 0s;
+   transform: translateY(var(--translate));
+   
+   @container style(--scroll-direction: 0) {
+      /* Scroll is idle, so we keep the current header 
+       * position by setting an extremely high 
+       * transition delay. ~2 billion seconds should 
+       * be enough even for the most patient user ;) 
+       */
+      transition-delay: calc(infinity * 1s);  
+   }
+
+   
+   /*
+   * Note: you could avoid the subsequent style 
+   * queries if you set the --translate property 
+   * like so:
+   * 
+   *   @container style(not (--scroll-direction: 0)) {
+   *     --translate: calc((var(--scroll-direction) + 1) * -50%);
+   *   }
+   *
+   * but it would only work for this specific use 
+   * case and values, so I keep them for clarity.
+   */
+
+   @container style(--scroll-direction: -1) {
+      /* Scrolling up, so we must reveal the header */
+      --translate: 0;
+   }
+
+   @container style(--scroll-direction: 1) { 
+      /* Scrolling down, so we must hide the header 
+       *
+       * Assign a lower value if you want to also hide
+       * the box-shadow below the header
+       * (e.g. --translate: calc(-100% - 15px))
+       */
+      --translate: -100%;
+   }   
+}

@@ -1,5 +1,7 @@
 :root {
   --width-available-max: 1200px;
+  --height-header: 5rem;
+  --parallax-background-image: url("../images/background-wave-1.png");
   
   --glass-frame-border-width: 13px;
 }

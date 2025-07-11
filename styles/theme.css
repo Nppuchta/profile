@@ -8,3 +8,9 @@
 
   --theme-color-first-letter: var(--sand-1);
 }
+
+@keyframes scalePulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}

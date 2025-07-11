@@ -1,71 +1,34 @@
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--size-3) 0;
-  margin-inline: var(--size-4);
-  /* background: black; */
-}
-
-/* .title {
-  font-size: var(--font-size-4);
-  color: var(--sand-3);
-  text-shadow: 3px 3px 10px var(--sand-2);
-  padding-inline: 0.25em;
-  white-space: nowrap;
-} */
-
-.title img {
-  width: 4em;
-}
-
 .menu-desktop {
   display: flex;
   gap: 1.5em;
   font-size: var(--font-size-3);
   white-space: nowrap;
-}
+  
+  button {
+    font-size: var(--font-size-4);
+    background-color: transparent;
+    vertical-align: middle;
+  }
 
-header button {
-  font-size: var(--font-size-4);
-  background-color: transparent;
-  vertical-align: middle;
+  button:hover {
+    animation: scalePulse 1s ease;
+  }
+    
+  img.logo-resume {
+    height: 2rem;
+  }
+  
+  img.logo-artstation {
+    width: 2rem;
+    filter: grayscale(100%) sepia(100%) hue-rotate(373deg) saturate(60%) brightness(79%);
+  }
+  
+  img.logo-linkedin {
+    width: 2rem;
+    filter: grayscale(100%) sepia(100%) brightness(55%);
+  }
+  
+  .button.btn-mobile-menu-open {
+    margin-left: 1em;
+  }
 }
-
-header img.logo-personal {
-  width: 4rem;
-  transition: transform, 300ms ease-in-out;
-  filter: drop-shadow(0 0 10px rgba(154, 145, 120, 0.1));
-  filter: grayscale(100%) sepia(100%) brightness(55%);
-}
-
-header img.logo-personal:hover {
-  animation: scalePulse 1s ease;
-  filter: drop-shadow(0 15px 20px rgba(154, 145, 120, 0.2));
-  filter: grayscale(100%) sepia(100%) brightness(55%);
-}
-
-@keyframes scalePulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); } /* Peak scale */
-  100% { transform: scale(1); } /* Back to original */
-}
-
-header button img.logo-resume {
-  height: 2rem;
-}
-
-header button img.logo-artstation {
-  width: 2rem;
-  filter: grayscale(100%) sepia(100%) hue-rotate(373deg) saturate(60%) brightness(79%);
-}
-
-header button img.logo-linkedin {
-  width: 2rem;
-  filter: grayscale(100%) sepia(100%) brightness(55%);
-}
-
-.header button.btn-mobile-menu-open {
-  margin-left: 1em;
-}
-
