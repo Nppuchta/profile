@@ -57,6 +57,24 @@ a {
   border-radius: var(--radius-2);
 }
 
+.new-label {
+  position: relative !important;
+}
+.new-label::after {
+  content: 'New';
+  display: inline-flex;
+  position: absolute;
+  font-size: var(--font-size-0);
+  border-radius: var(--radius-2);
+  background: linear-gradient(to right, #fdc830, #fe7335);
+  color: black;
+  font-weight: var(--font-weight-7);
+  text-transform: uppercase;
+  padding-inline: var(--size-1);
+  transform: rotate(0.05turn) translateX(-27px) translateY(2px);
+  z-index: -1;
+}
+
 svg {
   fill: var(--theme-color);
   transform: scale(1.5);

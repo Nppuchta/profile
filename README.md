@@ -2,25 +2,31 @@
 
 VFX Portfolio of Naomi Puchta
 
-## Setup
+## One Time Setup
 
-```
-git clone git@github.com:gpuchta/portfolio.git portfolio
-cd portfolio
-```
+### Clone Repo
 
-## Terminal Session
+[https://github.com/gpuchta/portfolio](https://github.com/gpuchta/portfolio)
 
-```
-git config user.name "gpuchta"
-git config user.email "gpuchta@gmail.com"
+## Development Setup
 
-# clear so we don't end up trying using the company user
-ssh-add -D
+### Install Microsoft Visual Studio Code
 
-# now add private key that is registered with personal GitHub account
-ssh-add ~/.ssh/id_rsa_github_gpuchta
+[Microsoft Visual Studio Code Download](https://code.visualstudio.com/download)
 
-ssh -T git@github.com
-Hi gpuchta! You've successfully authenticated, but GitHub does not provide shell access.
-```
+* Install Extensions
+  * Live Server (from Ritwick Dey)
+  * Markdown All in One
+
+
+### Install GitHub Desktop (Optional)
+
+[GitHub Desktop](https://desktop.github.com/download/)
+
+### Clone your repo to the harddrive
+
+Use either command line tool (CLI) or GitHub Desktop app.
+
+### Open clone directory in Microsoft Visual Studio Code
+
+

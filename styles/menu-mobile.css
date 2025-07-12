@@ -109,7 +109,7 @@
 
 .menu-mobile img.logo-linkedin {
   width: 2rem;
-  filter: invert(48%) sepia(13%) saturate(48%) hue-rotate(360deg) brightness(0.18);
+  filter: invert(48%) sepia(13%) saturate(48%) hue-rotate(360deg) brightness(0.24);
 }
 
 @media (max-width: 700px) {
