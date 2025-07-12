@@ -73,6 +73,7 @@ class AppController {
     let pageClass = window.location.hash.toLowerCase().slice(1);
     pageClass = this.state.pageClassSet.has(pageClass) ? pageClass : this.options.defaultPage;
     this.switchToPage(pageClass);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   scrollAppBackground() {
