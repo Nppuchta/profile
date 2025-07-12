@@ -49,6 +49,7 @@ class AppController {
     window.addEventListener('orientationchange', this.closeMobileMenu.bind(this));
     window.addEventListener('load', this.switchToUrlHashPage.bind(this));
     window.addEventListener('scroll', this.scrollAppBackground.bind(this));
+    window.addEventListener('popstate', this.switchToUrlHashPage.bind(this));
   }
 
   addExternalLinkListeners() {
