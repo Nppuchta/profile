@@ -1,7 +1,7 @@
 class Carousel3dController {
   constructor(element, options = {}) {
     this.element = element;
-    this.quantity = Number.parseInt(element.style.getPropertyValue('--quantity'));
+    this.quantity = document.querySelectorAll('.slider > *').length;
     this.options = {
       sensitivity: 5,
       friction: 10,
@@ -26,10 +26,19 @@ class Carousel3dController {
   }
   
   init() {
+    this.setCssQuantityProperty();
     this.addEventListeners();
     this.updateTransform();
   }
-  
+
+  setCssQuantityProperty() {
+    // these properties are used in the CSS for the 3D carousel
+    document.querySelector('.slider').style.setProperty('--quantity', this.quantity);
+    Array.from(document.querySelectorAll('.slider > *')).forEach((element, index) => {
+      element.style.setProperty('--position', index + 1);
+    });
+  }
+
   addEventListeners() {
     // Mouse events
     this.element.addEventListener('mousedown', this.handleStart.bind(this));
