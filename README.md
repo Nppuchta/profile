@@ -30,3 +30,4 @@ Use either command line tool (CLI) or GitHub Desktop app.
 ### Open clone directory in Microsoft Visual Studio Code
 
 
+<!-- //in order to make comments that hide like this (do not show on the webpage, use cntrl + / to hide it) -->
