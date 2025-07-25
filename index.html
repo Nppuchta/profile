@@ -101,13 +101,11 @@
     <!-- ------------------------------------------------------- -->
 
     <page class="home">
+      <div>
       <div class="banner">
         <div class="slider">
-          <div class="btn-octopus-lady item glass">
-            <img src="portfolio/octopus-lady/octopus-lady-concept-transparent.avif">
-          </div>
-          <div class="btn-octopus-lady item glass">
-            <img src="portfolio/octopus-lady/render-progress-2.avif">
+          <div class="btn-wolf item glass">
+            <img src="portfolio/wolf/Wolf_NOSCENE_Beauty_Closeup.avif">
           </div>
           <div class="btn-city-rain item glass">
             <video autoplay muted loop class="bg-video">
@@ -129,6 +127,26 @@
           </div>
         </div>
       </div>
+    </div>
+      <div>
+      <h3>About Me</h3>
+      <p>
+        Hello, my name is Naomi Puchta! I am a Gnomon Graduate specializing in
+        FX, currently based in the Bay Area. My interest in the industry began
+        back in high school, doodling characters on a crumpled sheet of paper
+        during and between classes. At the same time, I took several computer
+        science classes, but eventually found my way into the film and games
+        industry. FX brings the best of both worlds, allowing me to express my
+        creativity through various mediums while feeding my love for problem
+        solving.
+      </p>
+      <p>
+        My passions extend towards modeling, texturing, and sculpting allowing
+        me to turn my 2D concepts into 3D environments and lively characters.
+        I'm always excited to collaborate with others who share the same
+        passion, and I look forward to sharing my work with the world.
+      </p>
+    </div>
     </page>
 
     <!-- ------------------------------------------------------- -->
@@ -144,9 +162,7 @@
             <img src="portfolio/city-rain/compositing.avif" class="glass">
           </div>
           <p>
-            // edit these paragraphs to be more suitable for project desc
-            City inspired by some of the semi futuristic neon city artwork I've
-            seen over the years as well as the vibrant nights in Tokyo.
+            Neon city loosely inspired by the bright and grungy aesthetic of the cyberpunk world.
           </p>
         </div>
 
@@ -155,7 +171,7 @@
             <img src="portfolio/volcano/npuchta-volcano,png" class="glass">
           </div>
           <p>
-            A prehistoric volcanic eruption.
+            Prehistoric volcanic eruption.
           </p>
         </div>
 
@@ -164,7 +180,7 @@
             <img src="portfolio/classroom/classroom-rendering.avif" class="glass">
           </div>
           <p>
-            A haunting classroom scene that would leave the viewer unnerved.
+            Haunted and abandoned classroom.
           </p>
         </div>
 
@@ -280,13 +296,39 @@
           </video>
         </div>
 
-        <h3>Breakdown</h3>
+        <h3>Summary</h3>
         <p>
-          // change the lorem ipsum to proper english
-          To do. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Asperiores laudantium illum, dolores consequatur quisquam iste
-          quod ad, illo nihil nemo, neque officia. Quae iste quod qui
-          quibusdam odio expedita facilis.
+          Due to time constraints on the project I did not document progress photos for this project.
+          However, while I do not have photos there are still some things I would like to note on this project.
+        </p>
+        <p>
+          The primary challenge when working on this volcanic scene was figuring out a believable way to create flowing lava.
+          I scoured across the internet for tutorials on lava, and ended up settling and compiling a few that followed this method:
+          The lava's shifting colors was primarily controlled by the velocity the liquid particles. The faster the lava flowed, the brighter
+          and hotter the lava, the slower top crust would beocme darker. To achieve the bubbling lava, I followed a simple tutorial that
+          involved adding surface tension to the water and spawning randomized spheres at the bottom of the liquid container that would
+          subtract a section of the liquid. Said liquid bubble would then rise up due to the built in engine in Houdini, and the liquid (due
+          to the viscosity variables added in the lava) and the bubble would "pop" once it reached the surface. Said tension and bubble size would be
+          tweaked and randomized to get 'natural' looking bubbles in the lava. Temperature was also a very important part of this scene, as the top layers controlled
+          when lava dripped or popped, the viscosity would rise, decreasing the velocity and by result the color of the liquid.
+        </p>
+        <p>
+          One of the main troubles I ran into during this project (in part due to time constraint), was that the liquid container would explode or jitter. This was remedied
+          by carefully tweaking the velocity and surface tension attributes, though I was never able to figure out exactly why certain values would make the lava break.
+        </p>
+          The props in the scene were Quixel aquired assets that I retextured to give all rocks a more uniform color and grit. The terrain was a height field modified
+          with randomized stones that each had a varying degree of noise and rotation. The volcano terrain was textured in substance painter, with a high detail displacement map baked into a
+          low resolution model. The crystal see on the left was built by making a randomized primary chunk, scattered on a small plane that then had smaller randomized chunks 'cut'. some
+          displacement and smaller flecks were scattered and randomized on the crystal as well.
+        <p>
+          Similar to some of the effects used in the raining city, I took certain portions of the terrain and created a randomized black and white noise map that would
+          act as the emitter for the smoke. The noise was gradually changing, which allowed for certain parts of the smoke to emit before slowly stopping and disappating.
+        </p>
+        <p>
+          While there are parts of this project I found to be very helpful in my learning, and some parts of the project I like, I would have done certain parts of this project differently
+          were I to start from the beginning again. Part of my container issues at the time were due to holes in the geometry, something that would have been fixed if I had focused on
+          properly merging the geometry before getting to the liquid. Instead it was a battle of going back and forth, checking and double checking certain parts for gaps or improper normals. In all
+          this project gave way to a lot of fun experimentation and fixes that I now carry into my future projects.
         </p>
 
         <h3>Programs Used</h3>
@@ -296,12 +338,12 @@
           <img src="icons/icon-sw-maya.avif" alt="Maya">
           <img src="icons/icon-sw-nuke.avif" alt="Nuke">
           <img src="icons/icon-sw-redshift.avif" alt="Redshift">
-          <img src="icons/icon-sw-v-ray.svg" alt="V-Ray">
-          <img src="icons/icon-sw-medibang.avif" alt="Medibang">
         </div>
 
       </production>
     </page>
+
+
 
     <!-- ------------------------------------------------------- -->
     <!-- Page                                                    -->
@@ -590,7 +632,27 @@
     <!-- ------------------------------------------------------- -->
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
+    <page class="wolf">
+      <production>
 
+        <h3>Big Bad Wolf</h3>
+
+        <h3>Summary</h3>
+        <p>
+          To be tweaked by tomorrow.
+        </p>
+
+        <h3>Programs Used</h3>
+        <div class="app-icons">
+          <img src="icons/icon-sw-blender.avif" alt="Blender">
+          <img src="icons/icon-sw-adobe-substance-painter.avif" alt="Adobe Substance Painter">
+          <img src="icons/icon-sw-maya.avif" alt="Maya">
+          <img src="icons/icon-sw-v-ray.svg" alt="V-Ray">
+          <img src="icons/icon-sw-medibang.avif" alt="Medibang">
+        </div>
+
+      </production>
+    </page>
     <page class="biography">
       <production>
         <h3>About Me</h3>
