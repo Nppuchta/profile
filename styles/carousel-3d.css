@@ -17,48 +17,52 @@
 /* Selectors                    */
 /* ---------------------------- */
 
+.banner {
+  margin-bottom: calc(50% * 9 / 16);
+}
+
 .banner .h1 {
-    font-size: var(--card-font-size-h1);
+  font-size: var(--card-font-size-h1);
 }
 
 .banner .h2 {
-    font-size: var(--card-font-size-h2);
+  font-size: var(--card-font-size-h2);
 }
 
 .banner .p {
-    font-size: var(--card-font-size-p);
-    color: #ababab;
+  font-size: var(--card-font-size-p);
+  color: #ababab;
 }
 
 .banner .slider .item h1,
 .banner .slider .item h2,
 .banner .slider .item h3,
 .banner .slider .item p {
-    line-height: 1em;
+  line-height: 1em;
 }
 
 .banner .golden {
-    color: var(--yellow-5);
-    text-shadow: 0 0 20px var(--yellow-2);
+  color: var(--yellow-5);
+  text-shadow: 0 0 20px var(--yellow-2);
 }
 
 .banner .glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    /* Safari support */
-    -webkit-backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    padding: var(--glass-frame-border-width);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: var(--glass-frame-border-width);
 }
 
 .banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: visible;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: visible;
+  position: relative;
 }
 
 /* ---------------------------------------------------- */
