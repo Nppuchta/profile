@@ -10,6 +10,7 @@ page {
   flex: 1;
   color: var(--theme-color-page);
   font-size: var(--font-size-4);
+  scrollbar-width: none;
 }
 
 page.active {
