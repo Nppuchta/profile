@@ -5,9 +5,9 @@ header {
   height: var(--height-header);
   padding: var(--size-3) 0;
   padding-inline: var(--size-4);
-  background: var(--sand-12);
+  background: #020202;
   border-bottom: 1px solid var(--sand-11);
-  opacity: 0.7;
+  opacity: 1;
 
   
   img.logo-personal {
