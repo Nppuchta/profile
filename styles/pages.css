@@ -4,12 +4,13 @@
 
 page {
   display: none;
-  min-height: 100dvh;
+  min-height: calc(100dvh - var(--height-header) * 2);
   padding-inline: 10px;
   margin-inline: auto;
   flex: 1;
   color: var(--theme-color-page);
   font-size: var(--font-size-4);
+  scrollbar-width: none;
 }
 
 page.active {
@@ -105,25 +106,37 @@ page div.content img {
 /* Home page                                           */
 /* --------------------------------------------------- */
 
-page.home.active { display: flex; }
+page.loading.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* --------------------------------------------------- */
+/* Home page                                           */
+/* --------------------------------------------------- */
+
+page.home.active {
+  display: grid;
+}
 page.home {
   padding: var(--size-4);
   overflow-y: scroll;
   justify-content: center;
   align-items: start;
-  /* height: 100dvh; */
 }
 
 /* --------------------------------------------------- */
-/* Projects                                      */
+/* WIPS, Projects                                      */
 /* --------------------------------------------------- */
 
+page.wips production,
 page.projects production {
   display: grid;
   max-width: 50rem;
   margin-inline: auto;
 }
 
+page.wips production .illustration-float,
 page.projects production .illustration-float {
   width: 44%;
 }
@@ -163,6 +176,16 @@ page.classroom production {
 /* --------------------------------------------------- */
 
 page.octopus-lady production {
+  display: grid;
+  max-width: 50rem;
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------- */
+/* Wolf page                                           */
+/* --------------------------------------------------- */
+
+page.wolf production {
   display: grid;
   max-width: 50rem;
   margin-inline: auto;

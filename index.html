@@ -14,7 +14,7 @@
   </style>
   <script>
     options = {
-      defaultPage: 'home',
+      defaultPage: 'loading',
       externalLinks: {
         artstation: {
           url: 'https://www.artstation.com/naomipuchta',
@@ -42,9 +42,8 @@
       </div>
 
       <nav class="menu-desktop">
-        <button class="hide-on-mobile btn-octopus-lady new-label">WIPS</button>
+        <button class="hide-on-mobile btn-wips new-label">WIPs</button>
         <button class="hide-on-mobile btn-projects btn-border-pop">Projects</button>
-        <button class="hide-on-mobile btn-biography">Bio</button>
 
         <button class="mobile-menu btn-external btn-resume" data-external-id="resume">
           <img class="logo-resume" src="icons/icon-pdf.avif">
@@ -79,9 +78,9 @@
               </svg>
             </button>
           </li>
-          <li class="mobile-menu btn-octopus-lady new-label">WIPS</li>
+          <li class="mobile-menu btn-home">Home</li>
+          <li class="mobile-menu btn-wips new-label">WIPs</li>
           <li class="mobile-menu btn-projects">Projects</li>
-          <li class="mobile-menu btn-biography">Bio</li>
 
           <li class="mobile-menu btn-external btn-resume" data-external-id="resume">
             <img class="logo-resume" src="icons/icon-pdf.avif">
@@ -100,25 +99,42 @@
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
 
+    <page class="loading" data-redirect-timeout="4000" data-redirect-page="home">
+      <div class="spinner">
+        <div class="cat-logo"><img src="./icons/icon-logo.svg" alt="Loading..."></div>
+
+        <div class="spinner-sector spinner-sector-1"></div>
+        <div class="spinner-sector spinner-sector-2"></div>
+        <div class="spinner-sector spinner-sector-3"></div>
+
+        <div class="spinner-sector-inner spinner-sector-1-inner"></div>
+        <div class="spinner-sector-inner spinner-sector-2-inner"></div>
+        <div class="spinner-sector-inner spinner-sector-3-inner"></div>
+      </div>
+    </page>
+
+    <!-- ------------------------------------------------------- -->
+    <!-- Page                                                    -->
+    <!-- ------------------------------------------------------- -->
+
     <page class="home">
-      <div>
       <div class="banner">
         <div class="slider">
           <div class="btn-wolf item glass">
             <img src="portfolio/wolf/Wolf_NOSCENE_Beauty_Closeup.avif">
           </div>
           <div class="btn-city-rain item glass">
-            <video autoplay muted loop class="bg-video">
+            <video muted loop class="bg-video">
               <source type="video/mp4" src="portfolio/city-rain/npuchta-rain.mp4">
             </video>
           </div>
           <div class="btn-volcano item glass">
-            <video autoplay muted loop class="bg-video">
+            <video muted loop class="bg-video">
               <source type="video/mp4" src="portfolio/volcano/npuchta-volcano.mp4">
             </video>
           </div>
           <div class="btn-classroom item glass">
-            <video autoplay muted loop class="bg-video">
+            <video muted loop class="bg-video">
               <source type="video/mp4" src="portfolio/classroom/npuchta-classroom.mp4">
             </video>
           </div>
@@ -127,26 +143,54 @@
           </div>
         </div>
       </div>
-    </div>
       <div>
-      <h3>About Me</h3>
-      <p>
-        Hello, my name is Naomi Puchta! I am a Gnomon Graduate specializing in
-        FX, currently based in the Bay Area. My interest in the industry began
-        back in high school, doodling characters on a crumpled sheet of paper
-        during and between classes. At the same time, I took several computer
-        science classes, but eventually found my way into the film and games
-        industry. FX brings the best of both worlds, allowing me to express my
-        creativity through various mediums while feeding my love for problem
-        solving.
-      </p>
-      <p>
-        My passions extend towards modeling, texturing, and sculpting allowing
-        me to turn my 2D concepts into 3D environments and lively characters.
-        I'm always excited to collaborate with others who share the same
-        passion, and I look forward to sharing my work with the world.
-      </p>
-    </div>
+        <h3>About Me</h3>
+        <p>
+          Hello, my name is Naomi Puchta! I am a Gnomon Graduate specializing in
+          FX, currently based in the Bay Area. My interest in the industry began
+          back in high school, doodling characters on a crumpled sheet of paper
+          during and between classes. At the same time, I took several computer
+          science classes, but eventually found my way into the film and games
+          industry. FX brings the best of both worlds, allowing me to express my
+          creativity through various mediums while feeding my love for problem
+          solving.
+        </p>
+        <p>
+          My passions extend towards modeling, texturing, and sculpting allowing
+          me to turn my 2D concepts into 3D environments and lively characters.
+          I'm always excited to collaborate with others who share the same
+          passion, and I look forward to sharing my work with the world.
+        </p>
+      </div>
+    </page>
+
+    <!-- ------------------------------------------------------- -->
+    <!-- Page                                                    -->
+    <!-- ------------------------------------------------------- -->
+
+    <page class="wips">
+      <production>
+        <h3>WIPs</h3>
+
+        <div class="illustration-container">
+          <div class="illustration-float btn-octopus-lady">
+            <img src="portfolio/octopus-lady/render-progress-2.avif" class="glass">
+          </div>
+          <p>
+            My first human head sculpt.
+          </p>
+        </div>
+
+        <div class="illustration-container">
+          <div class="illustration-float btn-wolf">
+            <img src="portfolio/wolf/Wolf_NOSCENE_Beauty_Closeup.avif" class="glass">
+          </div>
+          <p>
+            Big Bad Wolf.
+          </p>
+        </div>
+
+      </production>
     </page>
 
     <!-- ------------------------------------------------------- -->
@@ -181,15 +225,6 @@
           </div>
           <p>
             Haunted and abandoned classroom.
-          </p>
-        </div>
-
-        <div class="illustration-container">
-          <div class="illustration-float btn-octopus-lady">
-            <img src="portfolio/octopus-lady/render-progress-2.avif" class="glass">
-          </div>
-          <p class="new-label">
-            My first human head sculpt.
           </p>
         </div>
 
@@ -342,8 +377,6 @@
 
       </production>
     </page>
-
-
 
     <!-- ------------------------------------------------------- -->
     <!-- Page                                                    -->
@@ -632,6 +665,7 @@
     <!-- ------------------------------------------------------- -->
     <!-- Page                                                    -->
     <!-- ------------------------------------------------------- -->
+
     <page class="wolf">
       <production>
 
@@ -653,6 +687,11 @@
 
       </production>
     </page>
+
+    <!-- ------------------------------------------------------- -->
+    <!-- Page                                                    -->
+    <!-- ------------------------------------------------------- -->
+
     <page class="biography">
       <production>
         <h3>About Me</h3>

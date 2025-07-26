@@ -7,6 +7,8 @@ class AppController {
     this.closeBtn = document.querySelector('.btn-mobile-menu-close');
 
     this.options = {
+      /* see script tag in index.html */
+      loadingTimeout: 4000,
       ...options
     };
     
@@ -109,7 +111,15 @@ class AppController {
   switchToPage(pageClass) {
     console.log(`Switch to page ${pageClass}`);
     this.pages.forEach((p) => p.classList.remove('active'));
-    document.querySelector(`page.${pageClass}`).classList.add('active');
+    const page = document.querySelector(`page.${pageClass}`);
+    page.classList.add('active');
+    if ('redirectTimeout' in page.dataset && 'redirectPage' in page.dataset) {
+      console.debug(`Page ${pageClass} has redirect timeout: ${page.dataset.redirectTimeout} and redirect page: ${page.dataset.redirectPage}`);
+      setTimeout(() => {
+        console.debug(`Switch to default page after loading`);
+        this.switchToPage(page.dataset.redirectPage);
+      }, page.dataset.redirectTimeout);
+    }
     this.updateUrlHash(pageClass);
   }
 
