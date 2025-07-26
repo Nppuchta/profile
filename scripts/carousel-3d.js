@@ -52,6 +52,13 @@ class Carousel3dController {
 
     // Remove the transition after snapping to allow free rotation again
     this.element.addEventListener('transitionend', this.handleTransitionEnd.bind(this));
+
+    // Adjust transform height on load and resize
+    // Not sure what I was trying to achieve with this, but is
+    // messes with the carousel top position and hides part of the carousel
+    //
+    // window.addEventListener('load', this.adjustTransformHeight.bind(this));
+    // window.addEventListener('resize', this.adjustTransformHeight.bind(this));
   }
   
   getEventCoords(e) {
@@ -98,6 +105,12 @@ class Carousel3dController {
   handleTransitionEnd() {
     this.element.style.transition = '';
   }
+
+  // adjustTransformHeight() {
+  //   const rect = this.element.children[0].getBoundingClientRect();
+  //   console.log('rect: %o', rect);
+  //   this.element.parentElement.style.height = `${rect.height}px`;
+  // }
   
   updateRotation(deltaX, deltaY) {
     this.state.currentRotateY += deltaX * this.options.sensitivity;
