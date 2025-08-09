@@ -60,5 +60,8 @@ class Carousel2dController {
   }
 }
 
-const carousel2d = document.querySelector('.carousel-2d');
-const carousel2dController = new Carousel2dController(carousel2d);
+const classroomCarousel2d = document.querySelector('.carousel-2d.classroom');
+const classroomCarousel2dController = new Carousel2dController(classroomCarousel2d);
+
+const wolfCarousel2d = document.querySelector('.carousel-2d.wolf');
+const wolfCarousel2dController = new Carousel2dController(wolfCarousel2d);
