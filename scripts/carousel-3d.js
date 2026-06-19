@@ -21,6 +21,12 @@ class Carousel3dController {
       velocityX: 0,
       velocityY: 0
     };
+
+    this.decelerationFrameId = null;
+    this.home = document.querySelector('page.home');
+    console.error('home: %o', this.home);
+    this.leftArrow = this.home?.querySelector('.carousel-3d-arrow.left-arrow');
+    this.rightArrow = this.home?.querySelector('.carousel-3d-arrow.right-arrow');
     
     this.init();
   }
@@ -28,6 +34,7 @@ class Carousel3dController {
   init() {
     this.setCssQuantityProperty();
     this.addEventListeners();
+    this.addArrowListeners();
     this.updateTransform();
   }
 
@@ -60,6 +67,40 @@ class Carousel3dController {
     // window.addEventListener('load', this.adjustTransformHeight.bind(this));
     // window.addEventListener('resize', this.adjustTransformHeight.bind(this));
   }
+
+  addArrowListeners() {
+    this.leftArrow?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.rotateByStep(-1);
+    });
+    this.rightArrow?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.rotateByStep(1);
+    });
+  }
+
+  cancelDeceleration() {
+    if (this.decelerationFrameId !== null) {
+      cancelAnimationFrame(this.decelerationFrameId);
+      this.decelerationFrameId = null;
+    }
+    this.state.velocityX = 0;
+    this.state.velocityY = 0;
+  }
+
+  rotateByStep(step) {
+    this.cancelDeceleration();
+    this.state.isDragging = false;
+
+    const snappedRotateY = this.snapToNearest(this.state.currentRotateY);
+    const targetRotateY = snappedRotateY + step * this.options.snapStep;
+    const { perspective, baseRotateX } = this.options;
+
+    this.state.currentRotateY = targetRotateY;
+    this.element.style.transition = 'transform 0.4s cubic-bezier(.25,.8,.25,1)';
+    this.element.style.transform =
+      `perspective(${perspective}px) rotateX(${baseRotateX}deg) rotateY(${targetRotateY}deg)`;
+  }
   
   getEventCoords(e) {
     return e.touches ? 
@@ -68,6 +109,8 @@ class Carousel3dController {
   }
   
   handleStart(e) {
+    this.cancelDeceleration();
+    this.element.style.transition = '';
     this.state.isDragging = true;
     const coords = this.getEventCoords(e);
     this.state.startX = coords.x;
@@ -131,8 +174,10 @@ class Carousel3dController {
   }
   
   startDeceleration() {
+    this.cancelDeceleration();
+
     const animate = () => {
-      const { perspective } = this.options;
+      const { perspective, baseRotateX } = this.options;
 
       // Apply friction
       this.state.velocityX *= this.options.friction;
@@ -148,16 +193,18 @@ class Carousel3dController {
                          Math.abs(this.state.velocityY) > this.options.velocityThreshold;
       
       if (hasVelocity) {
-        requestAnimationFrame(animate);
+        this.decelerationFrameId = requestAnimationFrame(animate);
       } else {
-        let snappedRotateY = this.snapToNearest(this.state.currentRotateY);
+        this.decelerationFrameId = null;
+        const snappedRotateY = this.snapToNearest(this.state.currentRotateY);
+        this.state.currentRotateY = snappedRotateY;
         this.element.style.transition = 'transform 0.4s cubic-bezier(.25,.8,.25,1)';
         this.element.style.transform = 
-          `perspective(${perspective}px) rotateX(-16deg) rotateY(${snappedRotateY}deg)`; // translateZ(-${perspective}px)
+          `perspective(${perspective}px) rotateX(${baseRotateX}deg) rotateY(${snappedRotateY}deg)`;
       }
     };
     
-    animate();
+    this.decelerationFrameId = requestAnimationFrame(animate);
   }
   
   // Public methods for external control

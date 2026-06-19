@@ -82,7 +82,7 @@
   /* Calculations of container size.                      */
   /* - 100% of view port - n%                             */
   /* ---------------------------------------------------- */
-  top: calc(100dvh * 0.05);
+  margin-top: calc(100dvh * 0.05);
   aspect-ratio: 16/9;
   width: var(--card-width);
 }
@@ -129,4 +129,31 @@
         100% 100%,
         0% 100%
       ); */
+}
+
+.carousel-3d-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--size-6);
+  /*margin-top: var(--size-4);*/
+  z-index: 3;
+}
+
+.carousel-3d-arrow {
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--theme-color);
+  border: solid 1px color-mix(in srgb, var(--theme-color), transparent 60%);
+  border-radius: 7px;
+  padding: 5px 18px;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 1;
+  user-select: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.carousel-3d-arrow:hover {
+  opacity: 1;
 }
