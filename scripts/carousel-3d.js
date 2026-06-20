@@ -9,6 +9,8 @@ class Carousel3dController {
       perspective: 1000,
       velocityThreshold: 0.1,
       snapStep: 360 / this.quantity,
+      autoRotateSpeed: 4,
+      autoRotateIdleDelay: 7000,
       ...options
     };
     
@@ -23,6 +25,10 @@ class Carousel3dController {
     };
 
     this.decelerationFrameId = null;
+    this.autoRotateFrameId = null;
+    this.autoRotateLastTimestamp = null;
+    this.lastManualInteraction = null;
+    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.home = document.querySelector('page.home');
     this.leftArrow = this.home?.querySelector('.carousel-3d-arrow.left-arrow');
     this.rightArrow = this.home?.querySelector('.carousel-3d-arrow.right-arrow');
@@ -35,6 +41,7 @@ class Carousel3dController {
     this.addEventListeners();
     this.addArrowListeners();
     this.updateTransform();
+    this.startAutoRotateLoop();
   }
 
   setCssQuantityProperty() {
@@ -78,6 +85,66 @@ class Carousel3dController {
     });
   }
 
+  isHomeVisible() {
+    return this.home?.classList.contains('active') ?? false;
+  }
+
+  isTransitioning() {
+    return Boolean(this.element.style.transition);
+  }
+
+  canAutoRotate() {
+    if (this.prefersReducedMotion) return false;
+    if (!this.isHomeVisible()) return false;
+    if (this.state.isDragging) return false;
+    if (this.decelerationFrameId !== null) return false;
+    if (this.isTransitioning()) return false;
+    if (this.lastManualInteraction === null) return true;
+    return Date.now() - this.lastManualInteraction >= this.options.autoRotateIdleDelay;
+  }
+
+  markManualInteraction() {
+    this.lastManualInteraction = Date.now();
+    this.autoRotateLastTimestamp = null;
+  }
+
+  startAutoRotateLoop() {
+    if (this.autoRotateFrameId !== null) return;
+    const tick = (timestamp) => {
+      this.tickAutoRotate(timestamp);
+      this.autoRotateFrameId = requestAnimationFrame(tick);
+    };
+    this.autoRotateFrameId = requestAnimationFrame(tick);
+  }
+
+  stopAutoRotateLoop() {
+    if (this.autoRotateFrameId !== null) {
+      cancelAnimationFrame(this.autoRotateFrameId);
+      this.autoRotateFrameId = null;
+    }
+    this.autoRotateLastTimestamp = null;
+  }
+
+  tickAutoRotate(timestamp) {
+    if (!this.canAutoRotate()) {
+      this.autoRotateLastTimestamp = null;
+      return;
+    }
+
+    if (this.autoRotateLastTimestamp === null) {
+      this.autoRotateLastTimestamp = timestamp;
+      return;
+    }
+
+    const deltaMs = timestamp - this.autoRotateLastTimestamp;
+    this.autoRotateLastTimestamp = timestamp;
+    const deltaDeg = (deltaMs / 1000) * this.options.autoRotateSpeed;
+
+    this.state.currentRotateY += deltaDeg;
+    this.element.style.transition = '';
+    this.updateTransform();
+  }
+
   cancelDeceleration() {
     if (this.decelerationFrameId !== null) {
       cancelAnimationFrame(this.decelerationFrameId);
@@ -87,18 +154,79 @@ class Carousel3dController {
     this.state.velocityY = 0;
   }
 
+  isOnSnapAngle(angle) {
+    const snapped = this.snapToNearest(angle);
+    return Math.abs(angle - snapped) < 0.5;
+  }
+
+  getStepTargetRotateY(currentY, step) {
+    const { snapStep } = this.options;
+    const nearestIndex = Math.round(currentY / snapStep);
+    const onSnap = this.isOnSnapAngle(currentY);
+
+    if (step > 0) {
+      return onSnap
+        ? (nearestIndex + 1) * snapStep
+        : Math.ceil(currentY / snapStep) * snapStep;
+    }
+
+    return onSnap
+      ? (nearestIndex - 1) * snapStep
+      : Math.floor(currentY / snapStep) * snapStep;
+  }
+
   rotateByStep(step) {
     this.cancelDeceleration();
     this.state.isDragging = false;
+    this.markManualInteraction();
+    this.syncCurrentRotationFromVisual();
 
-    const snappedRotateY = this.snapToNearest(this.state.currentRotateY);
-    const targetRotateY = snappedRotateY + step * this.options.snapStep;
+    const currentY = this.state.currentRotateY;
+    const targetRotateY = this.getStepTargetRotateY(currentY, step);
     const { perspective, baseRotateX } = this.options;
 
     this.state.currentRotateY = targetRotateY;
     this.element.style.transition = 'transform 0.4s cubic-bezier(.25,.8,.25,1)';
     this.element.style.transform =
       `perspective(${perspective}px) rotateX(${baseRotateX}deg) rotateY(${targetRotateY}deg)`;
+  }
+
+  syncCurrentRotationFromVisual() {
+    this.element.getAnimations().forEach((animation) => animation.cancel());
+    this.element.style.transition = '';
+
+    const visualRotateY = this.getRotationYFromElement();
+    if (visualRotateY !== null) {
+      this.state.currentRotateY = visualRotateY;
+    }
+  }
+
+  getRotationYFromElement() {
+    const transform = window.getComputedStyle(this.element).transform;
+    if (!transform || transform === 'none') {
+      return this.state.currentRotateY;
+    }
+
+    const values = transform
+      .match(/matrix3d?\(([^)]+)\)/)?.[1]
+      .split(',')
+      .map((value) => Number.parseFloat(value.trim()));
+
+    if (!values?.length) {
+      return this.state.currentRotateY;
+    }
+
+    if (values.length === 16) {
+      const rotateY = Math.atan2(values[2], values[10]) * (180 / Math.PI);
+      const rotateX = Math.asin(-values[6]) * (180 / Math.PI);
+      const baseRotateX = this.options.baseRotateX;
+
+      if (Math.abs(rotateX - baseRotateX) < 2) {
+        return rotateY;
+      }
+    }
+
+    return this.state.currentRotateY;
   }
   
   getEventCoords(e) {
@@ -141,6 +269,7 @@ class Carousel3dController {
   
   handleEnd() {
     this.state.isDragging = false;
+    this.markManualInteraction();
     this.startDeceleration();
   }
 
@@ -224,6 +353,8 @@ class Carousel3dController {
   }
   
   destroy() {
+    this.cancelDeceleration();
+    this.stopAutoRotateLoop();
     this.element.removeEventListener('mousedown', this.handleStart);
     document.removeEventListener('mousemove', this.handleMove);
     document.removeEventListener('mouseup', this.handleEnd);
