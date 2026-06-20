@@ -26,7 +26,55 @@ class AppController {
     this.addEventListeners();
     this.addMobileMenuListeners();
     this.addExternalLinkListeners();
+    this.addProjectKeyboardListeners();
     console.groupEnd();
+  }
+
+  getActivePageClass() {
+    const activePage = document.querySelector('page.active');
+    if (!activePage) return null;
+    return [...activePage.classList].find((cls) => cls !== 'active') ?? null;
+  }
+
+  isProjectPage(pageClass) {
+    return this.getProjectOrder().includes(pageClass);
+  }
+
+  navigateAdjacentProject(step) {
+    const pageClass = this.getActivePageClass();
+    if (!pageClass) return;
+
+    if (pageClass === 'home') {
+      window.carousel3dController?.navigateProject(step);
+      return;
+    }
+
+    if (!this.isProjectPage(pageClass)) return;
+
+    const targetPage = this.getAdjacentProject(pageClass, step);
+    if (!targetPage) return;
+
+    this.switchToPage(targetPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  addProjectKeyboardListeners() {
+    document.addEventListener('keydown', (e) => {
+      if (e.target.closest('input, textarea, select')) return;
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+
+      const pageClass = this.getActivePageClass();
+      if (!pageClass) return;
+
+      const step = e.key === 'ArrowLeft' ? -1 : 1;
+      const onHome = pageClass === 'home';
+      const onProjectPage = this.isProjectPage(pageClass);
+
+      if (!onHome && !onProjectPage) return;
+
+      e.preventDefault();
+      this.navigateAdjacentProject(step);
+    });
   }
 
   extractProjectOrderFromIndex(indexPageClass) {
@@ -38,6 +86,23 @@ class AppController {
       .filter(Boolean)
       .map((cls) => cls.slice(4))
       .filter((pageClass) => document.querySelector(`page.${pageClass}`));
+  }
+
+  getProjectOrder() {
+    const indexPages = ['wips', 'projects'];
+    return indexPages
+      .flatMap((indexPageClass) => this.extractProjectOrderFromIndex(indexPageClass))
+      .filter((pageClass, index, list) => list.indexOf(pageClass) === index);
+  }
+
+  getAdjacentProject(pageClass, step) {
+    const projectOrder = this.getProjectOrder();
+    const count = projectOrder.length;
+    if (count < 2) return null;
+
+    const index = projectOrder.indexOf(pageClass);
+    const currentIndex = index === -1 ? 0 : index;
+    return projectOrder[(currentIndex + step + count) % count];
   }
 
   getProjectTitle(pageClass) {
@@ -56,24 +121,20 @@ class AppController {
   }
 
   buildProjectNavigation() {
-    const indexPages = ['wips', 'projects'];
-    const projectOrder = indexPages
-      .flatMap((indexPageClass) => this.extractProjectOrderFromIndex(indexPageClass))
-      .filter((pageClass, index, list) => list.indexOf(pageClass) === index);
+    const projectOrder = this.getProjectOrder();
+    if (projectOrder.length < 2) return;
 
-    projectOrder.forEach((pageClass, index) => {
+    projectOrder.forEach((pageClass) => {
       const production = document.querySelector(`page.${pageClass} production`);
       if (!production || production.querySelector('.project-nav')) return;
+
+      const prevPageClass = this.getAdjacentProject(pageClass, -1);
+      const nextPageClass = this.getAdjacentProject(pageClass, 1);
+      if (!prevPageClass || !nextPageClass) return;
 
       const nav = document.createElement('nav');
       nav.className = 'project-nav';
       nav.setAttribute('aria-label', 'Project navigation');
-
-      const count = projectOrder.length;
-      if (count < 2) return;
-
-      const prevPageClass = projectOrder[(index - 1 + count) % count];
-      const nextPageClass = projectOrder[(index + 1) % count];
 
       nav.appendChild(this.createProjectNavLink(prevPageClass, 'prev'));
       nav.appendChild(this.createProjectNavLink(nextPageClass, 'next'));
@@ -214,3 +275,4 @@ class AppController {
 
 const pages = document.querySelectorAll('page');
 const appController = new AppController(pages, {...options});
+window.appController = appController;

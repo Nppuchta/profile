@@ -33,6 +33,7 @@ class Carousel3dController {
     this.home = document.querySelector('page.home');
     this.leftArrow = this.home?.querySelector('.carousel-3d-arrow.left-arrow');
     this.rightArrow = this.home?.querySelector('.carousel-3d-arrow.right-arrow');
+    this.projectSlots = this.buildProjectSlots();
     
     this.init();
   }
@@ -41,8 +42,15 @@ class Carousel3dController {
     this.setCssQuantityProperty();
     this.addEventListeners();
     this.addArrowListeners();
+    this.updateArrowLabels();
     this.updateTransform();
     this.startAutoRotateLoop();
+  }
+
+  buildProjectSlots() {
+    return Array.from(this.element.querySelectorAll('.item'))
+      .map((element) => [...element.classList].find((cls) => cls.startsWith('btn-'))?.slice(4))
+      .filter(Boolean);
   }
 
   setCssQuantityProperty() {
@@ -78,12 +86,91 @@ class Carousel3dController {
   addArrowListeners() {
     this.leftArrow?.addEventListener('click', (e) => {
       e.stopPropagation();
-      this.rotateByStep(-1);
+      this.navigateProject(-1);
     });
     this.rightArrow?.addEventListener('click', (e) => {
       e.stopPropagation();
-      this.rotateByStep(1);
+      this.navigateProject(1);
     });
+  }
+
+  getProjectTitle(pageClass) {
+    const title = document.querySelector(`page.${pageClass} production > h3`);
+    return title?.textContent.trim() ?? pageClass;
+  }
+
+  updateArrowLabels() {
+    const currentProject = this.getFrontProject();
+    if (!currentProject || !window.appController) return;
+
+    const prevProject = window.appController.getAdjacentProject(currentProject, -1);
+    const nextProject = window.appController.getAdjacentProject(currentProject, 1);
+
+    if (this.leftArrow && prevProject) {
+      this.leftArrow.setAttribute('aria-label', `Previous project: ${this.getProjectTitle(prevProject)}`);
+    }
+
+    if (this.rightArrow && nextProject) {
+      this.rightArrow.setAttribute('aria-label', `Next project: ${this.getProjectTitle(nextProject)}`);
+    }
+  }
+
+  getFrontProject() {
+    const slotCount = this.projectSlots.length;
+    if (slotCount === 0) return null;
+
+    const slotIndex = ((Math.round(this.state.currentRotateY / this.options.snapStep) % slotCount) + slotCount) % slotCount;
+    return this.projectSlots[slotIndex];
+  }
+
+  navigateProject(step) {
+    if (!window.appController || this.projectSlots.length < 2) {
+      this.rotateByStep(step);
+      return;
+    }
+
+    this.syncCurrentRotationFromVisual();
+    const currentProject = this.getFrontProject();
+    const targetProject = window.appController.getAdjacentProject(currentProject, step);
+    if (!targetProject) return;
+
+    this.rotateToProject(targetProject, step);
+    this.updateArrowLabels();
+  }
+
+  rotateToProject(pageClass, step) {
+    const slotIndex = this.projectSlots.indexOf(pageClass);
+    if (slotIndex === -1) {
+      this.rotateByStep(step);
+      return;
+    }
+
+    this.syncCurrentRotationFromVisual();
+
+    const { snapStep } = this.options;
+    const currentY = this.state.currentRotateY;
+    const targetBase = slotIndex * snapStep;
+    let targetRotateY = targetBase;
+
+    if (step > 0) {
+      while (targetRotateY <= currentY + 0.5) targetRotateY += 360;
+    } else {
+      while (targetRotateY >= currentY - 0.5) targetRotateY -= 360;
+    }
+
+    this.animateToRotateY(targetRotateY);
+  }
+
+  animateToRotateY(targetRotateY) {
+    this.cancelDeceleration();
+    this.state.isDragging = false;
+    this.markManualInteraction();
+
+    const { perspective, baseRotateX } = this.options;
+    this.state.currentRotateY = targetRotateY;
+    this.element.style.transition = 'transform 0.4s cubic-bezier(.25,.8,.25,1)';
+    this.element.style.transform =
+      `perspective(${perspective}px) rotateX(${baseRotateX}deg) rotateY(${targetRotateY}deg)`;
   }
 
   isHomeVisible() {
@@ -182,19 +269,10 @@ class Carousel3dController {
   }
 
   rotateByStep(step) {
-    this.cancelDeceleration();
-    this.state.isDragging = false;
-    this.markManualInteraction();
     this.syncCurrentRotationFromVisual();
-
     const currentY = this.state.currentRotateY;
     const targetRotateY = this.getStepTargetRotateY(currentY, step);
-    const { perspective, baseRotateX } = this.options;
-
-    this.state.currentRotateY = targetRotateY;
-    this.element.style.transition = 'transform 0.4s cubic-bezier(.25,.8,.25,1)';
-    this.element.style.transform =
-      `perspective(${perspective}px) rotateX(${baseRotateX}deg) rotateY(${targetRotateY}deg)`;
+    this.animateToRotateY(targetRotateY);
   }
 
   syncCurrentRotationFromVisual() {
@@ -289,6 +367,7 @@ class Carousel3dController {
 
   handleTransitionEnd() {
     this.element.style.transition = '';
+    this.updateArrowLabels();
   }
 
   // adjustTransformHeight() {
