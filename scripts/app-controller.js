@@ -272,7 +272,9 @@ class AppController {
     this.pages.forEach((p) => p.classList.remove('active'));
     const page = document.querySelector(`page.${pageClass}`);
     page.classList.add('active');
-    if ('redirectTimeout' in page.dataset && 'redirectPage' in page.dataset) {
+    if (!('redirectDisabled' in page.dataset)
+        && 'redirectTimeout' in page.dataset
+        && 'redirectPage' in page.dataset) {
       console.debug(`Page ${pageClass} has redirect timeout: ${page.dataset.redirectTimeout} and redirect page: ${page.dataset.redirectPage}`);
       setTimeout(() => {
         console.debug(`Switch to default page after loading`);

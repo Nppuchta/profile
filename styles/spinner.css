@@ -18,7 +18,7 @@
   height: 100%;
   border-radius: 50%;
   border: 25px solid transparent;
-  mix-blend-mode: multiply;
+  mix-blend-mode: color-dodge;
   animation: rotate var(--duration) var(--timing) infinite;
 }
 .spinner-sector-1 {
@@ -44,7 +44,7 @@
   height: 80%;
   border-radius: 50%;
   border: 5px solid transparent;
-  mix-blend-mode: multiply;
+  mix-blend-mode: color-dodge;
   animation: rotate var(--duration) var(--timing) infinite;
 }
 .spinner-sector-1-inner {

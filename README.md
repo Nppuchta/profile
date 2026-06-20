@@ -30,4 +30,11 @@ Use either command line tool (CLI) or GitHub Desktop app.
 ### Open clone directory in Microsoft Visual Studio Code
 
 
+## Debug Spinner
+
+```js
+pages[0].dataset.redirectDisabled = true;
+window.location.hash = 'loading';
+```
+
 <!-- //in order to make comments that hide like this (do not show on the webpage, use cntrl + / to hide it) -->
