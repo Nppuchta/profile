@@ -75,7 +75,7 @@ a {
   text-transform: uppercase;
   padding-inline: var(--size-1);
   transform: rotate(0.05turn) translateX(-27px) translateY(2px);
-  z-index: -1;
+  z-index: 100;
 }
 
 svg {

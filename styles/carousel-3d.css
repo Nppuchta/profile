@@ -145,7 +145,7 @@
   color: var(--theme-color);
   border: solid 1px color-mix(in srgb, var(--theme-color), transparent 60%);
   border-radius: 7px;
-  padding: 5px 18px;
+  padding: 10px 36px;
   cursor: pointer;
   font-size: 32px;
   line-height: 1;

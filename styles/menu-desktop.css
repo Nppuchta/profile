@@ -31,4 +31,11 @@
   .button.btn-mobile-menu-open {
     margin-left: 1em;
   }
+
+  #wips.active,
+  #wips:target,
+  #projects.active,
+  #projects:target {
+    text-decoration: underline;
+  }
 }

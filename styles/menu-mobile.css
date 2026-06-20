@@ -86,6 +86,11 @@
   text-align: start;
 }
 
+.menu-mobile ul li.active {
+  background-color: var(--sand-11);
+  color: var(--theme-color);
+}
+
 .menu-mobile button {
   cursor: pointer !important;
   background-color: transparent;

@@ -24,7 +24,6 @@ class Carousel3dController {
 
     this.decelerationFrameId = null;
     this.home = document.querySelector('page.home');
-    console.error('home: %o', this.home);
     this.leftArrow = this.home?.querySelector('.carousel-3d-arrow.left-arrow');
     this.rightArrow = this.home?.querySelector('.carousel-3d-arrow.right-arrow');
     
