@@ -58,22 +58,64 @@ class AppController {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  getFirstMediaElement(activePage) {
+    const production = activePage?.querySelector('production');
+    if (!production) return null;
+
+    const walker = document.createTreeWalker(production, NodeFilter.SHOW_ELEMENT, {
+      acceptNode(node) {
+        if (node.tagName === 'VIDEO' || node.tagName === 'IMG') {
+          return NodeFilter.FILTER_ACCEPT;
+        }
+        return NodeFilter.FILTER_SKIP;
+      },
+    });
+
+    return walker.nextNode();
+  }
+
+  toggleFirstProjectVideo() {
+    const activePage = document.querySelector('page.active');
+    const pageClass = this.getActivePageClass();
+    if (!activePage || !pageClass || !this.isProjectPage(pageClass)) return false;
+
+    const firstMedia = this.getFirstMediaElement(activePage);
+    if (!firstMedia || firstMedia.tagName !== 'VIDEO') return false;
+
+    if (firstMedia.paused) {
+      firstMedia.play();
+    } else {
+      firstMedia.pause();
+    }
+
+    return true;
+  }
+
   addProjectKeyboardListeners() {
     document.addEventListener('keydown', (e) => {
-      if (e.target.closest('input, textarea, select')) return;
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      if (e.target.closest('input, textarea, select, button, a')) return;
 
       const pageClass = this.getActivePageClass();
       if (!pageClass) return;
 
-      const step = e.key === 'ArrowLeft' ? -1 : 1;
-      const onHome = pageClass === 'home';
-      const onProjectPage = this.isProjectPage(pageClass);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        const step = e.key === 'ArrowLeft' ? -1 : 1;
+        const onHome = pageClass === 'home';
+        const onProjectPage = this.isProjectPage(pageClass);
 
-      if (!onHome && !onProjectPage) return;
+        if (!onHome && !onProjectPage) return;
 
-      e.preventDefault();
-      this.navigateAdjacentProject(step);
+        e.preventDefault();
+        this.navigateAdjacentProject(step);
+        return;
+      }
+
+      if (e.code !== 'Space' && e.key !== ' ') return;
+      if (e.target.closest('video')) return;
+
+      if (this.toggleFirstProjectVideo()) {
+        e.preventDefault();
+      }
     });
   }
 
