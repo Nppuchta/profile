@@ -126,6 +126,43 @@ page.home {
 }
 
 /* --------------------------------------------------- */
+/* Project prev/next navigation                        */
+/* --------------------------------------------------- */
+
+.project-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: var(--size-2);
+}
+
+.project-nav-link {
+  background: transparent;
+  border: none;
+  color: var(--theme-color-page);
+  font-size: var(--font-size-3);
+  cursor: pointer;
+  padding: var(--size-2) 0;
+  opacity: 0.8;
+}
+
+.project-nav-link:hover {
+  opacity: 1;
+  animation: scalePulse 1s ease;
+}
+
+.project-nav-prev {
+  margin-right: auto;
+  text-align: left;
+}
+
+.project-nav-next {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* --------------------------------------------------- */
 /* WIPS, Projects                                      */
 /* --------------------------------------------------- */
 

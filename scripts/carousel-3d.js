@@ -16,6 +16,7 @@ class Carousel3dController {
     
     this.state = {
       isDragging: false,
+      hasDragged: false,
       startX: 0,
       startY: 0,
       currentRotateX: 0,
@@ -105,6 +106,11 @@ class Carousel3dController {
 
   markManualInteraction() {
     this.lastManualInteraction = Date.now();
+    this.autoRotateLastTimestamp = null;
+  }
+
+  resetAutoRotateIdle() {
+    this.lastManualInteraction = null;
     this.autoRotateLastTimestamp = null;
   }
 
@@ -239,6 +245,7 @@ class Carousel3dController {
     this.cancelDeceleration();
     this.element.style.transition = '';
     this.state.isDragging = true;
+    this.state.hasDragged = false;
     const coords = this.getEventCoords(e);
     this.state.startX = coords.x;
     this.state.startY = coords.y;
@@ -254,6 +261,10 @@ class Carousel3dController {
     const coords = this.getEventCoords(e);
     const deltaX = coords.x - this.state.startX;
     const deltaY = coords.y - this.state.startY;
+
+    if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) {
+      this.state.hasDragged = true;
+    }
     
     this.updateRotation(deltaX, deltaY);
     this.updateVelocity(deltaX, deltaY);
@@ -269,8 +280,11 @@ class Carousel3dController {
   
   handleEnd() {
     this.state.isDragging = false;
-    this.markManualInteraction();
-    this.startDeceleration();
+    if (this.state.hasDragged) {
+      this.markManualInteraction();
+      this.startDeceleration();
+    }
+    this.state.hasDragged = false;
   }
 
   handleTransitionEnd() {
@@ -373,6 +387,4 @@ const carousel3dController = new Carousel3dController(sliderElement, {
   baseRotateX: -16
 });
 
-// Optional: expose controller for external access
-// carousel3dController.reset();
-// carousel3dController.setRotation(45, 90);
+window.carousel3dController = carousel3dController;

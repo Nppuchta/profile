@@ -22,10 +22,63 @@ class AppController {
   
   init() {
     console.group('App controller initialization');
+    this.buildProjectNavigation();
     this.addEventListeners();
     this.addMobileMenuListeners();
     this.addExternalLinkListeners();
     console.groupEnd();
+  }
+
+  extractProjectOrderFromIndex(indexPageClass) {
+    const indexPage = document.querySelector(`page.${indexPageClass}`);
+    if (!indexPage) return [];
+
+    return Array.from(indexPage.querySelectorAll('.illustration-float'))
+      .map((element) => [...element.classList].find((cls) => cls.startsWith('btn-')))
+      .filter(Boolean)
+      .map((cls) => cls.slice(4))
+      .filter((pageClass) => document.querySelector(`page.${pageClass}`));
+  }
+
+  getProjectTitle(pageClass) {
+    const title = document.querySelector(`page.${pageClass} production > h3`);
+    return title?.textContent.trim() ?? pageClass;
+  }
+
+  createProjectNavLink(pageClass, direction) {
+    const link = document.createElement('button');
+    link.type = 'button';
+    link.className = `btn-${pageClass} project-nav-link project-nav-${direction}`;
+    link.textContent = direction === 'prev'
+      ? `❮ ${this.getProjectTitle(pageClass)}`
+      : `${this.getProjectTitle(pageClass)} ❯`;
+    return link;
+  }
+
+  buildProjectNavigation() {
+    const indexPages = ['wips', 'projects'];
+    const projectOrder = indexPages
+      .flatMap((indexPageClass) => this.extractProjectOrderFromIndex(indexPageClass))
+      .filter((pageClass, index, list) => list.indexOf(pageClass) === index);
+
+    projectOrder.forEach((pageClass, index) => {
+      const production = document.querySelector(`page.${pageClass} production`);
+      if (!production || production.querySelector('.project-nav')) return;
+
+      const nav = document.createElement('nav');
+      nav.className = 'project-nav';
+      nav.setAttribute('aria-label', 'Project navigation');
+
+      const count = projectOrder.length;
+      if (count < 2) return;
+
+      const prevPageClass = projectOrder[(index - 1 + count) % count];
+      const nextPageClass = projectOrder[(index + 1) % count];
+
+      nav.appendChild(this.createProjectNavLink(prevPageClass, 'prev'));
+      nav.appendChild(this.createProjectNavLink(nextPageClass, 'next'));
+      production.insertBefore(nav, production.firstChild);
+    });
   }
 
   addEventListeners() {
@@ -100,10 +153,13 @@ class AppController {
   addEventListener(btn, pageClass) {
     console.log(`Add app event listeners for page ${pageClass}`);
     btn.addEventListener('click', (e) => {
-      const btn = e.target;
+      const target = e.currentTarget;
       this.switchToPage(pageClass);
-      if (btn.classList.contains('mobile-menu')) {
+      if (target.classList.contains('mobile-menu')) {
         this.closeMobileMenu();
+      }
+      if (target.classList.contains('project-nav-link')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   }
@@ -121,6 +177,10 @@ class AppController {
       }, page.dataset.redirectTimeout);
     }
     this.updateUrlHash(pageClass);
+
+    if (pageClass === 'home') {
+      window.carousel3dController?.resetAutoRotateIdle();
+    }
   }
 
   updateUrlHash(pageClass) {
