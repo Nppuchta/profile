@@ -32,6 +32,8 @@
     margin-left: 1em;
   }
 
+  #home.active,
+  #home:target,
   #wips.active,
   #wips:target,
   #projects.active,
