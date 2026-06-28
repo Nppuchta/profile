@@ -39,5 +39,6 @@
   #projects.active,
   #projects:target {
     text-decoration: underline;
+    outline: none;
   }
 }
